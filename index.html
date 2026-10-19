@@ -13,6 +13,7 @@
       color: #333;
       text-align: center;
       padding: 30px;
+      margin: 0;
     }
 
     .container {
@@ -21,7 +22,7 @@
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       max-width: 600px;
-      margin: auto;
+      margin: 50px auto;
     }
 
     h1 {
@@ -52,43 +53,172 @@
       color: #888;
       font-size: 12px;
     }
+
+    /* Passwortseite */
+    #login {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 35px 25px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(214, 51, 108, 0.15);
+    }
+
+    #login h1 {
+      font-size: 28px;
+    }
+
+    #password {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 14px;
+      margin: 15px 0;
+      border: 2px solid #ffc2d1;
+      border-radius: 10px;
+      font-size: 20px;
+      text-align: center;
+      outline: none;
+    }
+
+    #password:focus {
+      border-color: #d6336c;
+    }
+
+    button {
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      padding: 13px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #b02556;
+    }
+
+    #error {
+      color: #d6336c;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    #website {
+      display: none;
+    }
   </style>
 
 </head>
 
 <body>
-  <div class="container">
+
+  <!-- Passwortabfrage -->
+
+  <div id="login">
 
 ```
-<h1>Deepika, ich liebe dich über alles! ❤️</h1>
+<h1>Für Deepika ❤️</h1>
 
 <p>
-  Wir sind zwar schon seit dem <span class="date">06.09.</span> zusammen,
-  aber mir kommt es so vor, als würde unsere Geschichte gerade erst richtig
-  beginnen. Wir haben noch eine ewig lange, wunderschöne Reise vor uns,
-  auf die ich mich jeden einzelnen Tag freue.
+  Ich habe etwas für dich vorbereitet. 🥹💕
 </p>
 
 <p>
-  Mit dir fühlt sich selbst der gewöhnlichste Tag besonders an.
-  Du bringst mich zum Lachen, machst mich glücklich und schaffst es
-  immer wieder, dass ich mich aufs Neue in dich verliebe.
-  Ich kann es kaum erwarten, noch so viele Erinnerungen mit dir zu sammeln,
-  mit dir zu lachen, Blödsinn zu machen und einfach gemeinsam durchs Leben
-  zu gehen. Ich liebe dich, Deepika, mehr als Worte beschreiben können. ❤️
+  Aber zuerst musst du unser kleines Geheimnis kennen. 🔐
 </p>
 
-<p>
-  Und jetzt hör auf, so süß zu sein ... du perverse Sau. :P ❤️
-  <small class="small-text">
-    (btw du hast wunderschöne braune Augen 👀)
-  </small>
-</p>
+<form id="loginForm">
+  <input
+    type="password"
+    id="password"
+    placeholder="Unsere geheime Zahl ❤️"
+    inputmode="numeric"
+    autocomplete="off"
+    required
+  >
 
-<!-- Hier wird euer Foto geladen -->
-<img src="deepikaprabh.jpg" alt="Foto von uns">
+  <br>
+
+  <button type="submit">Öffnen ❤️</button>
+</form>
+
+<p id="error" aria-live="polite"></p>
 ```
 
   </div>
+
+  <!-- Eigentliche Website -->
+
+  <div id="website">
+
+```
+<div class="container">
+
+  <h1>Deepika, ich liebe dich über alles! ❤️</h1>
+
+  <p>
+    Wir sind zwar schon seit dem
+    <span class="date">06.09.</span> zusammen,
+    aber mir kommt es so vor, als würde unsere Geschichte
+    gerade erst richtig beginnen. Wir haben noch eine ewig
+    lange, wunderschöne Reise vor uns, auf die ich mich
+    jeden einzelnen Tag freue.
+  </p>
+
+  <p>
+    Mit dir fühlt sich selbst der gewöhnlichste Tag besonders an.
+    Du bringst mich zum Lachen, machst mich glücklich und schaffst
+    es immer wieder, dass ich mich aufs Neue in dich verliebe.
+    Ich kann es kaum erwarten, noch so viele Erinnerungen mit dir
+    zu sammeln, mit dir zu lachen, Blödsinn zu machen und einfach
+    gemeinsam durchs Leben zu gehen. Ich liebe dich, Deepika,
+    mehr als Worte beschreiben können. ❤️
+  </p>
+
+  <p>
+    Und jetzt hör auf, so süß zu sein ... du perverse Sau. :P ❤️
+
+    <small class="small-text">
+      (btw du hast wunderschöne braune Augen 👀)
+    </small>
+  </p>
+
+  <!-- Euer Foto -->
+  <img src="deepikaprabh.jpg" alt="Foto von uns">
+
+</div>
+```
+
+  </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const passwordInput = document.getElementById("password");
+    const errorMessage = document.getElementById("error");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (passwordInput.value === "100111") {
+
+        document.getElementById("login").style.display = "none";
+        document.getElementById("website").style.display = "block";
+
+        document.title = "Für Deepika ❤️";
+
+      } else {
+
+        errorMessage.textContent =
+          "Falsche Zahl 😜 Versuch es noch einmal! ❤️";
+
+        passwordInput.value = "";
+        passwordInput.focus();
+
+      }
+    });
+  </script>
+
 </body>
 </html>
