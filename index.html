@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,17 +6,107 @@
   <title>Für Deepika ❤️</title>
 
   <style>
+    /* ===== Farbthemen ===== */
+
+    :root,
+    [data-theme="blau"] {
+      --bg: #eef5ff;
+      --primary: #1c7ed6;
+      --primary-dark: #1864ab;
+      --soft: #f3f8ff;
+      --soft-border: #d0e3fa;
+      --soft-hover: #e3efff;
+      --hover-border: #8bb8ee;
+      --btn-soft: #d0e3fa;
+      --btn-soft-hover: #a5c8f3;
+      --input-border: #a5c8f3;
+      --shadow: 28, 126, 214;
+    }
+
+    [data-theme="pink"] {
+      --bg: #fff0f3;
+      --primary: #d6336c;
+      --primary-dark: #b02556;
+      --soft: #fff5f7;
+      --soft-border: #ffe0e8;
+      --soft-hover: #ffe8ef;
+      --hover-border: #f4a6bd;
+      --btn-soft: #ffe0e8;
+      --btn-soft-hover: #ffc2d1;
+      --input-border: #ffc2d1;
+      --shadow: 214, 51, 108;
+    }
+
+    [data-theme="gelb"] {
+      --bg: #fff9e6;
+      --primary: #d98e04;
+      --primary-dark: #b07203;
+      --soft: #fffbee;
+      --soft-border: #ffeeba;
+      --soft-hover: #fff3cc;
+      --hover-border: #f5cf6b;
+      --btn-soft: #ffeeba;
+      --btn-soft-hover: #ffe08a;
+      --input-border: #ffe08a;
+      --shadow: 217, 142, 4;
+    }
+
+    [data-theme="rot"] {
+      --bg: #fff1f0;
+      --primary: #e03131;
+      --primary-dark: #b02525;
+      --soft: #fff5f5;
+      --soft-border: #ffd8d8;
+      --soft-hover: #ffe3e3;
+      --hover-border: #f5a3a3;
+      --btn-soft: #ffd8d8;
+      --btn-soft-hover: #ffb8b8;
+      --input-border: #ffb8b8;
+      --shadow: 224, 49, 49;
+    }
+
+    [data-theme="gruen"] {
+      --bg: #effaf1;
+      --primary: #2f9e44;
+      --primary-dark: #237a34;
+      --soft: #f4fcf6;
+      --soft-border: #cfeed6;
+      --soft-hover: #e0f6e5;
+      --hover-border: #8fd3a0;
+      --btn-soft: #cfeed6;
+      --btn-soft-hover: #a8e0b6;
+      --input-border: #a8e0b6;
+      --shadow: 47, 158, 68;
+    }
+
+    [data-theme="lila"] {
+      --bg: #f6f0ff;
+      --primary: #7048e8;
+      --primary-dark: #5835c0;
+      --soft: #f8f4ff;
+      --soft-border: #e0d4fb;
+      --soft-hover: #ede4ff;
+      --hover-border: #b69ef3;
+      --btn-soft: #e0d4fb;
+      --btn-soft-hover: #c8b4f7;
+      --input-border: #c8b4f7;
+      --shadow: 112, 72, 232;
+    }
+
+    /* ===== Grundlayout ===== */
+
     * {
       box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff0f3;
+      background-color: var(--bg);
       color: #333;
       text-align: center;
       padding: 20px;
       margin: 0;
+      transition: background-color 0.3s;
     }
 
     .container {
@@ -30,7 +119,7 @@
     }
 
     h1 {
-      color: #d6336c;
+      color: var(--primary);
       margin-bottom: 20px;
     }
 
@@ -41,7 +130,7 @@
 
     .date {
       font-weight: bold;
-      color: #d6336c;
+      color: var(--primary);
     }
 
     img {
@@ -66,7 +155,7 @@
       padding: 35px 25px;
       background: white;
       border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(214, 51, 108, 0.15);
+      box-shadow: 0 4px 20px rgba(var(--shadow), 0.15);
     }
 
     #login h1 {
@@ -77,7 +166,7 @@
       width: 100%;
       padding: 14px;
       margin: 15px 0;
-      border: 2px solid #ffc2d1;
+      border: 2px solid var(--input-border);
       border-radius: 10px;
       font-size: 20px;
       text-align: center;
@@ -85,11 +174,11 @@
     }
 
     #password:focus {
-      border-color: #d6336c;
+      border-color: var(--primary);
     }
 
     button {
-      background-color: #d6336c;
+      background-color: var(--primary);
       color: white;
       border: none;
       padding: 13px 25px;
@@ -100,11 +189,11 @@
     }
 
     button:hover {
-      background-color: #b02556;
+      background-color: var(--primary-dark);
     }
 
     #error {
-      color: #d6336c;
+      color: var(--primary);
       font-size: 14px;
       min-height: 20px;
     }
@@ -118,7 +207,7 @@
 
     .timeline-title {
       margin-top: 40px;
-      color: #d6336c;
+      color: var(--primary);
     }
 
     .timeline-intro {
@@ -139,16 +228,16 @@
       gap: 15px;
       text-align: left;
       padding: 20px;
-      background: #fff5f7;
+      background: var(--soft);
       color: #333;
-      border: 2px solid #ffe0e8;
+      border: 2px solid var(--soft-border);
       border-radius: 15px;
       transition: 0.2s;
     }
 
     .memory-card:hover {
-      background: #ffe8ef;
-      border-color: #f4a6bd;
+      background: var(--soft-hover);
+      border-color: var(--hover-border);
       transform: translateY(-2px);
     }
 
@@ -163,7 +252,7 @@
 
     .memory-date {
       display: block;
-      color: #d6336c;
+      color: var(--primary);
       font-size: 19px;
       font-weight: bold;
       margin-bottom: 5px;
@@ -177,25 +266,25 @@
     }
 
     .arrow {
-      color: #d6336c;
+      color: var(--primary);
       font-size: 24px;
     }
 
     /* Einzelne Erinnerungsseite */
 
     .back-button {
-      background: #ffe0e8;
-      color: #b02556;
+      background: var(--btn-soft);
+      color: var(--primary-dark);
       margin-bottom: 20px;
     }
 
     .back-button:hover {
-      background: #ffc2d1;
+      background: var(--btn-soft-hover);
     }
 
     .memory-content {
-      background: #fff5f7;
-      border: 1px solid #ffe0e8;
+      background: var(--soft);
+      border: 1px solid var(--soft-border);
       border-radius: 15px;
       padding: 25px 20px;
       margin-top: 25px;
@@ -210,10 +299,72 @@
     }
 
     .heart {
-      color: #d6336c;
+      color: var(--primary);
       font-size: 24px;
       margin-top: 20px;
     }
+
+    /* Farbwahl */
+
+    #themePicker {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    #themeToggle {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
+      box-shadow: 0 3px 10px rgba(var(--shadow), 0.35);
+    }
+
+    #themePanel {
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 14px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    #themePanel.open {
+      display: grid;
+    }
+
+    .swatch {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #ddd;
+      transition: transform 0.15s;
+    }
+
+    .swatch:hover {
+      transform: scale(1.12);
+    }
+
+    .swatch.active {
+      box-shadow: 0 0 0 3px #333;
+    }
+
+    .swatch[data-theme="blau"] { background: #1c7ed6; }
+    .swatch[data-theme="pink"] { background: #d6336c; }
+    .swatch[data-theme="gelb"] { background: #f2b01e; }
+    .swatch[data-theme="rot"] { background: #e03131; }
+    .swatch[data-theme="gruen"] { background: #2f9e44; }
+    .swatch[data-theme="lila"] { background: #7048e8; }
 
     @media (max-width: 480px) {
       body {
@@ -225,7 +376,7 @@
       }
 
       #login {
-        margin: 45px auto;
+        margin: 70px auto 45px;
       }
 
       .memory-card {
@@ -236,6 +387,21 @@
 </head>
 
 <body>
+
+  <!-- Farbwahl -->
+
+  <div id="themePicker">
+    <button id="themeToggle" type="button" aria-label="Farben ändern" title="Farben ändern">🎨</button>
+
+    <div id="themePanel" role="group" aria-label="Farbe wählen">
+      <button type="button" class="swatch" data-theme="blau" aria-label="Blau" title="Blau"></button>
+      <button type="button" class="swatch" data-theme="pink" aria-label="Pink" title="Pink"></button>
+      <button type="button" class="swatch" data-theme="gelb" aria-label="Gelb" title="Gelb"></button>
+      <button type="button" class="swatch" data-theme="rot" aria-label="Rot" title="Rot"></button>
+      <button type="button" class="swatch" data-theme="gruen" aria-label="Grün" title="Grün"></button>
+      <button type="button" class="swatch" data-theme="lila" aria-label="Lila" title="Lila"></button>
+    </div>
+  </div>
 
   <!-- Passwortabfrage -->
 
@@ -263,7 +429,6 @@
 
     <p id="error" aria-live="polite"></p>
   </div>
-
 
   <!-- Hauptwebsite nach dem richtigen Passwort -->
 
@@ -364,7 +529,6 @@
     </div>
   </div>
 
-
   <!-- Einzelne Erinnerungsseiten -->
 
   <div id="memoryPage">
@@ -389,8 +553,61 @@
     </div>
   </div>
 
-
   <script>
+    // Farbwahl
+
+    const THEMES = ["blau", "pink", "gelb", "rot", "gruen", "lila"];
+    const DEFAULT_THEME = "blau";
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themePanel = document.getElementById("themePanel");
+    const swatches = document.querySelectorAll(".swatch");
+
+    function applyTheme(name) {
+      if (!THEMES.includes(name)) name = DEFAULT_THEME;
+
+      document.documentElement.setAttribute("data-theme", name);
+
+      swatches.forEach(function(swatch) {
+        swatch.classList.toggle("active", swatch.dataset.theme === name);
+      });
+    }
+
+    function loadTheme() {
+      try {
+        return localStorage.getItem("deepika-theme") || DEFAULT_THEME;
+      } catch (e) {
+        return DEFAULT_THEME;
+      }
+    }
+
+    function saveTheme(name) {
+      try {
+        localStorage.setItem("deepika-theme", name);
+      } catch (e) {}
+    }
+
+    applyTheme(loadTheme());
+
+    themeToggle.addEventListener("click", function(event) {
+      event.stopPropagation();
+      themePanel.classList.toggle("open");
+    });
+
+    swatches.forEach(function(swatch) {
+      swatch.addEventListener("click", function() {
+        applyTheme(swatch.dataset.theme);
+        saveTheme(swatch.dataset.theme);
+        themePanel.classList.remove("open");
+      });
+    });
+
+    document.addEventListener("click", function(event) {
+      if (!themePanel.contains(event.target)) {
+        themePanel.classList.remove("open");
+      }
+    });
+
     // Passwortabfrage
 
     const form = document.getElementById("loginForm");
@@ -413,7 +630,6 @@
         passwordInput.focus();
       }
     });
-
 
     // HIER KANNST DU DEINE EIGENEN TEXTE EINTRAGEN ❤️
 
@@ -455,7 +671,6 @@ Schreib hier auf, was an diesem Tag passiert ist und warum er dir wichtig ist.`
       }
     };
 
-
     // Erinnerung öffnen
 
     function openMemory(id) {
@@ -473,7 +688,6 @@ Schreib hier auf, was an diesem Tag passiert ist und warum er dir wichtig ist.`
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-
 
     // Zurück zur Timeline
 
