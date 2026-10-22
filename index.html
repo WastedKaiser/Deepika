@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -7,22 +7,26 @@
   <title>Für Deepika ❤️</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff0f3;
       color: #333;
       text-align: center;
-      padding: 30px;
+      padding: 20px;
       margin: 0;
     }
 
     .container {
       background-color: white;
-      padding: 40px;
-      border-radius: 15px;
+      padding: 30px;
+      border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      margin: 50px auto;
+      max-width: 650px;
+      margin: 30px auto;
     }
 
     h1 {
@@ -32,7 +36,7 @@
 
     p {
       font-size: 18px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .date {
@@ -41,9 +45,9 @@
     }
 
     img {
-      margin-top: 30px;
+      margin-top: 25px;
       max-width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
@@ -55,9 +59,10 @@
     }
 
     /* Passwortseite */
+
     #login {
       max-width: 400px;
-      margin: 100px auto;
+      margin: 80px auto;
       padding: 35px 25px;
       background: white;
       border-radius: 20px;
@@ -69,7 +74,6 @@
     }
 
     #password {
-      box-sizing: border-box;
       width: 100%;
       padding: 14px;
       margin: 15px 0;
@@ -105,11 +109,130 @@
       min-height: 20px;
     }
 
-    #website {
+    #website,
+    #memoryPage {
       display: none;
     }
-  </style>
 
+    /* Erinnerungs-Timeline */
+
+    .timeline-title {
+      margin-top: 40px;
+      color: #d6336c;
+    }
+
+    .timeline-intro {
+      color: #777;
+      font-size: 15px;
+    }
+
+    .memory-list {
+      display: grid;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .memory-card {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-align: left;
+      padding: 20px;
+      background: #fff5f7;
+      color: #333;
+      border: 2px solid #ffe0e8;
+      border-radius: 15px;
+      transition: 0.2s;
+    }
+
+    .memory-card:hover {
+      background: #ffe8ef;
+      border-color: #f4a6bd;
+      transform: translateY(-2px);
+    }
+
+    .memory-icon {
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .memory-info {
+      flex: 1;
+    }
+
+    .memory-date {
+      display: block;
+      color: #d6336c;
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .memory-description {
+      display: block;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .arrow {
+      color: #d6336c;
+      font-size: 24px;
+    }
+
+    /* Einzelne Erinnerungsseite */
+
+    .back-button {
+      background: #ffe0e8;
+      color: #b02556;
+      margin-bottom: 20px;
+    }
+
+    .back-button:hover {
+      background: #ffc2d1;
+    }
+
+    .memory-content {
+      background: #fff5f7;
+      border: 1px solid #ffe0e8;
+      border-radius: 15px;
+      padding: 25px 20px;
+      margin-top: 25px;
+      text-align: left;
+      min-height: 180px;
+    }
+
+    .memory-content p {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-size: 17px;
+    }
+
+    .heart {
+      color: #d6336c;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+
+      .container {
+        padding: 22px 17px;
+      }
+
+      #login {
+        margin: 45px auto;
+      }
+
+      .memory-card {
+        padding: 15px 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -117,83 +240,159 @@
   <!-- Passwortabfrage -->
 
   <div id="login">
+    <h1>Für Deepika ❤️</h1>
 
-```
-<h1>Für Deepika ❤️</h1>
+    <p>Ich habe etwas für dich vorbereitet. 🥹💕</p>
 
-<p>
-  Ich habe etwas für dich vorbereitet. 🥹💕
-</p>
+    <p>Aber zuerst musst du unser kleines Geheimnis kennen. 🔐</p>
 
-<p>
-  Aber zuerst musst du unser kleines Geheimnis kennen. 🔐
-</p>
+    <form id="loginForm">
+      <input
+        type="password"
+        id="password"
+        placeholder="Unsere geheime Zahl ❤️"
+        inputmode="numeric"
+        autocomplete="off"
+        required
+      >
 
-<form id="loginForm">
-  <input
-    type="password"
-    id="password"
-    placeholder="Unsere geheime Zahl ❤️"
-    inputmode="numeric"
-    autocomplete="off"
-    required
-  >
+      <br><br>
 
-  <br>
+      <button type="submit">Öffnen ❤️</button>
+    </form>
 
-  <button type="submit">Öffnen ❤️</button>
-</form>
-
-<p id="error" aria-live="polite"></p>
-```
-
+    <p id="error" aria-live="polite"></p>
   </div>
 
-  <!-- Eigentliche Website -->
+
+  <!-- Hauptwebsite nach dem richtigen Passwort -->
 
   <div id="website">
 
-```
-<div class="container">
+    <div class="container">
 
-  <h1>Deepika, ich liebe dich über alles! ❤️</h1>
+      <h1>Deepika, ich liebe dich über alles! ❤️</h1>
 
-  <p>
-    Wir sind zwar schon seit dem
-    <span class="date">06.09.</span> zusammen,
-    aber mir kommt es so vor, als würde unsere Geschichte
-    gerade erst richtig beginnen. Wir haben noch eine ewig
-    lange, wunderschöne Reise vor uns, auf die ich mich
-    jeden einzelnen Tag freue.
-  </p>
+      <p>
+        Wir sind zwar schon seit dem
+        <span class="date">06.09.</span> zusammen,
+        aber mir kommt es so vor, als würde unsere Geschichte
+        gerade erst richtig beginnen. Wir haben noch eine ewig
+        lange, wunderschöne Reise vor uns, auf die ich mich
+        jeden einzelnen Tag freue.
+      </p>
 
-  <p>
-    Mit dir fühlt sich selbst der gewöhnlichste Tag besonders an.
-    Du bringst mich zum Lachen, machst mich glücklich und schaffst
-    es immer wieder, dass ich mich aufs Neue in dich verliebe.
-    Ich kann es kaum erwarten, noch so viele Erinnerungen mit dir
-    zu sammeln, mit dir zu lachen, Blödsinn zu machen und einfach
-    gemeinsam durchs Leben zu gehen. Ich liebe dich, Deepika,
-    mehr als Worte beschreiben können. ❤️
-  </p>
+      <p>
+        Mit dir fühlt sich selbst der gewöhnlichste Tag besonders an.
+        Du bringst mich zum Lachen, machst mich glücklich und schaffst
+        es immer wieder, dass ich mich aufs Neue in dich verliebe.
+        Ich kann es kaum erwarten, noch so viele Erinnerungen mit dir
+        zu sammeln, mit dir zu lachen, Blödsinn zu machen und einfach
+        gemeinsam durchs Leben zu gehen. Ich liebe dich, Deepika,
+        mehr als Worte beschreiben können. ❤️
+      </p>
 
-  <p>
-    Und jetzt hör auf, so süß zu sein ... du perverse Sau. :P ❤️
+      <p>
+        Und jetzt hör auf, so süß zu sein ... du perverse Sau. :P ❤️
 
-    <small class="small-text">
-      (btw du hast wunderschöne braune Augen 👀)
-    </small>
-  </p>
+        <small class="small-text">
+          (btw du hast wunderschöne braune Augen 👀)
+        </small>
+      </p>
 
-  <!-- Euer Foto -->
-  <img src="deepikaprabh.jpg" alt="Foto von uns">
+      <img src="deepikaprabh.jpg" alt="Foto von uns">
 
-</div>
-```
+      <!-- Timeline -->
 
+      <h1 class="timeline-title">Unsere Geschichte ❤️</h1>
+
+      <p class="timeline-intro">
+        Vier besondere Momente, die zu unserer Geschichte gehören.
+        Klick auf ein Datum, mein Schatz. 🥹💕
+      </p>
+
+      <div class="memory-list">
+
+        <button class="memory-card" onclick="openMemory('relationship')">
+          <span class="memory-icon">❤️</span>
+          <span class="memory-info">
+            <span class="memory-date">06.09.</span>
+            <span class="memory-description">
+              Der Tag, an dem wir zusammengekommen sind.
+            </span>
+          </span>
+          <span class="arrow">›</span>
+        </button>
+
+        <button class="memory-card" onclick="openMemory('snapchat')">
+          <span class="memory-icon">👻</span>
+          <span class="memory-info">
+            <span class="memory-date">10. Juli 2026</span>
+            <span class="memory-description">
+              Der Tag, an dem wir uns auf Snapchat geaddet haben.
+            </span>
+          </span>
+          <span class="arrow">›</span>
+        </button>
+
+        <button class="memory-card" onclick="openMemory('firstDate')">
+          <span class="memory-icon">🥹</span>
+          <span class="memory-info">
+            <span class="memory-date">21. Juli 2026</span>
+            <span class="memory-description">
+              Unser allererstes Treffen. 💗
+            </span>
+          </span>
+          <span class="arrow">›</span>
+        </button>
+
+        <button class="memory-card" onclick="openMemory('homeDate')">
+          <span class="memory-icon">🏡</span>
+          <span class="memory-info">
+            <span class="memory-date">26. Oktober 2026</span>
+            <span class="memory-description">
+              Unser erstes Treffen bei mir zu Hause. ❤️
+            </span>
+          </span>
+          <span class="arrow">›</span>
+        </button>
+
+      </div>
+
+      <p class="heart">Für immer wir. ❤️</p>
+
+    </div>
   </div>
 
+
+  <!-- Einzelne Erinnerungsseiten -->
+
+  <div id="memoryPage">
+    <div class="container">
+
+      <button class="back-button" onclick="backToTimeline()">
+        ← Zurück zu unserer Geschichte
+      </button>
+
+      <div id="memoryEmoji" style="font-size: 55px;">❤️</div>
+
+      <h1 id="memoryTitle">Unsere Erinnerung ❤️</h1>
+
+      <p id="memoryDate" class="date"></p>
+
+      <div class="memory-content">
+        <p id="memoryText"></p>
+      </div>
+
+      <p class="heart">Diese Erinnerung gehört für immer uns. ❤️</p>
+
+    </div>
+  </div>
+
+
   <script>
+    // Passwortabfrage
+
     const form = document.getElementById("loginForm");
     const passwordInput = document.getElementById("password");
     const errorMessage = document.getElementById("error");
@@ -202,22 +401,88 @@
       event.preventDefault();
 
       if (passwordInput.value === "100111") {
-
         document.getElementById("login").style.display = "none";
         document.getElementById("website").style.display = "block";
 
         document.title = "Für Deepika ❤️";
-
       } else {
-
         errorMessage.textContent =
           "Falsche Zahl 😜 Versuch es noch einmal! ❤️";
 
         passwordInput.value = "";
         passwordInput.focus();
-
       }
     });
+
+
+    // HIER KANNST DU DEINE EIGENEN TEXTE EINTRAGEN ❤️
+
+    const memories = {
+      relationship: {
+        title: "Unser Beziehungsanfang ❤️",
+        date: "06.09.",
+        emoji: "❤️",
+        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+
+Erzähl hier eure Geschichte vom Tag, an dem ihr zusammengekommen seid.`
+      },
+
+      snapchat: {
+        title: "Der Anfang auf Snapchat 👻",
+        date: "10. Juli 2026",
+        emoji: "👻",
+        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+
+Erzähl hier, wie ihr euch auf Snapchat geaddet habt und was du damals gedacht hast.`
+      },
+
+      firstDate: {
+        title: "Unser allererstes Treffen 🥹",
+        date: "21. Juli 2026",
+        emoji: "💗",
+        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+
+Schreib hier, wie euer erstes Treffen war und wie du dich dabei gefühlt hast.`
+      },
+
+      homeDate: {
+        title: "Unser Treffen bei mir zu Hause 🏡",
+        date: "26. Oktober 2026",
+        emoji: "🏡",
+        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+
+Schreib hier auf, was an diesem Tag passiert ist und warum er dir wichtig ist.`
+      }
+    };
+
+
+    // Erinnerung öffnen
+
+    function openMemory(id) {
+      const memory = memories[id];
+
+      if (!memory) return;
+
+      document.getElementById("website").style.display = "none";
+      document.getElementById("memoryPage").style.display = "block";
+
+      document.getElementById("memoryEmoji").textContent = memory.emoji;
+      document.getElementById("memoryTitle").textContent = memory.title;
+      document.getElementById("memoryDate").textContent = memory.date;
+      document.getElementById("memoryText").textContent = memory.text;
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+
+    // Zurück zur Timeline
+
+    function backToTimeline() {
+      document.getElementById("memoryPage").style.display = "none";
+      document.getElementById("website").style.display = "block";
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   </script>
 
 </body>
