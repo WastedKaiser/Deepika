@@ -746,6 +746,15 @@
 
     #noteText:focus { border-color: var(--primary); }
 
+    #noteText[readonly] { background: #fafafa; }
+
+    #noteUnlock {
+      width: 100%;
+      margin-top: 12px;
+      background: var(--btn-soft);
+      color: var(--primary-dark);
+    }
+
     .note-hint {
       margin: 10px 2px 0;
       font-size: 12px;
@@ -978,7 +987,9 @@
 
       <textarea id="noteText" placeholder="Schreib hier deine Notizen …" spellcheck="true"></textarea>
 
-      <p class="note-hint">✓ speichert und schließt · ✕ verwirft die Änderungen. Gespeichert wird nur auf diesem Gerät.</p>
+      <button id="noteUnlock" type="button">✏️ Bearbeiten (PIN)</button>
+
+      <p id="noteHint" class="note-hint"></p>
     </div>
   </div>
 
@@ -1934,22 +1945,94 @@
     $("photoUpload").addEventListener("click", () => startUpload("photo"));
     $("videoUpload").addEventListener("click", () => startUpload("video"));
 
-    // ===== Notizblock (genau eine Notiz, gespeichert in localStorage) =====
+    // ===== Notizblock (eine gemeinsame Notiz, für alle sichtbar) =====
 
-    const NOTE_KEY = "deepika-note";
-    let noteFallback = "";   // falls der Browser localStorage blockiert (nur bis zum Neuladen)
+    const NOTE_KEY = "deepika-note-v2";
+    const NOTE_LEGACY_KEY = "deepika-note";
+    const NOTE_FILE = "notes.json";
 
-    function getSavedNote() {
-      const value = storageGet(NOTE_KEY);
-      return value !== null ? value : noteFallback;
+    let noteState = { updatedAt: 0, text: "" };
+    let noteShown = "";
+
+    function readLocalNote() {
+      try {
+        const data = JSON.parse(storageGet(NOTE_KEY));
+        if (data && typeof data.text === "string") return data;
+      } catch (e) {}
+
+      const legacy = storageGet(NOTE_LEGACY_KEY);
+      if (legacy !== null) return { updatedAt: 1, text: legacy };
+      return null;
     }
 
-    function openNote() {
+    async function readRemoteNote() {
+      try {
+        const res = await fetch(NOTE_FILE + "?t=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) return null;
+        const data = await res.json();
+        if (data && typeof data.text === "string") return data;
+      } catch (e) {}
+      return null;
+    }
+
+    async function loadNote() {
+      const candidates = [readLocalNote(), await readRemoteNote()].filter(Boolean);
+      if (candidates.length) {
+        candidates.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+        noteState = candidates[0];
+      }
+    }
+
+    async function pushNote(token) {
+      if (!token) throw new Error("kein Token");
+
+      let sha;
+      const current = await fetch(ghUrl(NOTE_FILE), { headers: ghHeaders(token), cache: "no-store" });
+      if (current.ok) {
+        sha = (await current.json()).sha;
+      } else if (current.status !== 404) {
+        throw new Error("GitHub-Fehler " + current.status);
+      }
+
+      const body = {
+        message: "Notiz aktualisiert",
+        content: utf8ToBase64(JSON.stringify(noteState, null, 2))
+      };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(ghUrl(NOTE_FILE), {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+    }
+
+    function setNoteEditable(editable) {
+      $("noteText").readOnly = !editable;
+      $("noteSave").style.display = editable ? "" : "none";
+      $("noteUnlock").style.display = editable ? "none" : "";
+      $("noteHint").textContent = editable
+        ? "✓ speichert für alle sichtbar · ✕ verwirft die Änderungen seit dem letzten Speichern."
+        : "Diese Notiz kann jeder lesen. Zum Ändern brauchst du den PIN.";
+    }
+
+    async function openNote() {
       const field = $("noteText");
-      field.value = getSavedNote();
+
+      setNoteEditable(!!storageGet("deepika-token"));
+      field.value = noteState.text;
+      noteShown = noteState.text;
       $("noteModal").classList.add("open");
 
-      if (!field.value) setTimeout(() => field.focus(), 60);
+      if (!field.readOnly && !field.value) setTimeout(() => field.focus(), 60);
+
+      // aktuelle Version von GitHub nachladen, solange noch nichts geändert wurde
+      await loadNote();
+      if ($("noteModal").classList.contains("open") && field.value === noteShown && field.value !== noteState.text) {
+        field.value = noteState.text;
+        noteShown = noteState.text;
+      }
     }
 
     function closeNote() {
@@ -1959,17 +2042,27 @@
 
     $("noteButton").addEventListener("click", openNote);
 
-    $("noteSave").addEventListener("click", () => {
-      const value = $("noteText").value;
+    $("noteUnlock").addEventListener("click", () => {
+      askPin((token) => {
+        if (!token) {
+          toast("Zum Bearbeiten brauchst du den GitHub-Token (einmalig im PIN-Fenster).", 6000);
+          return;
+        }
+        setNoteEditable(true);
+        $("noteText").focus();
+      });
+    });
 
-      noteFallback = value;
-      storageSet(NOTE_KEY, value);
+    $("noteSave").addEventListener("click", async () => {
+      noteState = { updatedAt: Date.now(), text: $("noteText").value };
+      storageSet(NOTE_KEY, JSON.stringify(noteState));
       closeNote();
 
-      if (storageGet(NOTE_KEY) === value) {
-        toast("Notiz gespeichert ✓", 2500);
-      } else {
-        toast("Der Browser erlaubt kein dauerhaftes Speichern. Die Notiz bleibt nur bis zum Neuladen.", 6000);
+      try {
+        await pushNote(storageGet("deepika-token"));
+        toast("Notiz gespeichert ✓ Für alle sichtbar in ca. 1 Minute.", 5000);
+      } catch (e) {
+        toast("Nur auf diesem Handy gespeichert. GitHub hat nicht geklappt (" + e.message + ").", 7000);
       }
     });
 
@@ -1978,6 +2071,7 @@
     renderList();
     loadData();
     loadMedia();
+    loadNote();
   </script>
 </body>
 </html>
