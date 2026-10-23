@@ -2,7 +2,9 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
   <title>Für Deepika ❤️</title>
 
   <style>
@@ -10,122 +12,82 @@
 
     :root,
     [data-theme="blau"] {
-      --bg: #eef5ff;
-      --primary: #1c7ed6;
-      --primary-dark: #1864ab;
-      --soft: #f3f8ff;
-      --soft-border: #d0e3fa;
-      --soft-hover: #e3efff;
-      --hover-border: #8bb8ee;
-      --btn-soft: #d0e3fa;
-      --btn-soft-hover: #a5c8f3;
-      --input-border: #a5c8f3;
-      --shadow: 28, 126, 214;
+      --bg: #eef5ff; --primary: #1c7ed6; --primary-dark: #1864ab;
+      --soft: #f3f8ff; --soft-border: #d0e3fa; --soft-hover: #e3efff;
+      --btn-soft: #d0e3fa; --input-border: #a5c8f3; --shadow: 28, 126, 214;
     }
-
     [data-theme="pink"] {
-      --bg: #fff0f3;
-      --primary: #d6336c;
-      --primary-dark: #b02556;
-      --soft: #fff5f7;
-      --soft-border: #ffe0e8;
-      --soft-hover: #ffe8ef;
-      --hover-border: #f4a6bd;
-      --btn-soft: #ffe0e8;
-      --btn-soft-hover: #ffc2d1;
-      --input-border: #ffc2d1;
-      --shadow: 214, 51, 108;
+      --bg: #fff0f3; --primary: #d6336c; --primary-dark: #b02556;
+      --soft: #fff5f7; --soft-border: #ffe0e8; --soft-hover: #ffe8ef;
+      --btn-soft: #ffe0e8; --input-border: #ffc2d1; --shadow: 214, 51, 108;
     }
-
     [data-theme="gelb"] {
-      --bg: #fff9e6;
-      --primary: #d98e04;
-      --primary-dark: #b07203;
-      --soft: #fffbee;
-      --soft-border: #ffeeba;
-      --soft-hover: #fff3cc;
-      --hover-border: #f5cf6b;
-      --btn-soft: #ffeeba;
-      --btn-soft-hover: #ffe08a;
-      --input-border: #ffe08a;
-      --shadow: 217, 142, 4;
+      --bg: #fff9e6; --primary: #d98e04; --primary-dark: #b07203;
+      --soft: #fffbee; --soft-border: #ffeeba; --soft-hover: #fff3cc;
+      --btn-soft: #ffeeba; --input-border: #ffe08a; --shadow: 217, 142, 4;
     }
-
     [data-theme="rot"] {
-      --bg: #fff1f0;
-      --primary: #e03131;
-      --primary-dark: #b02525;
-      --soft: #fff5f5;
-      --soft-border: #ffd8d8;
-      --soft-hover: #ffe3e3;
-      --hover-border: #f5a3a3;
-      --btn-soft: #ffd8d8;
-      --btn-soft-hover: #ffb8b8;
-      --input-border: #ffb8b8;
-      --shadow: 224, 49, 49;
+      --bg: #fff1f0; --primary: #e03131; --primary-dark: #b02525;
+      --soft: #fff5f5; --soft-border: #ffd8d8; --soft-hover: #ffe3e3;
+      --btn-soft: #ffd8d8; --input-border: #ffb8b8; --shadow: 224, 49, 49;
     }
-
     [data-theme="gruen"] {
-      --bg: #effaf1;
-      --primary: #2f9e44;
-      --primary-dark: #237a34;
-      --soft: #f4fcf6;
-      --soft-border: #cfeed6;
-      --soft-hover: #e0f6e5;
-      --hover-border: #8fd3a0;
-      --btn-soft: #cfeed6;
-      --btn-soft-hover: #a8e0b6;
-      --input-border: #a8e0b6;
-      --shadow: 47, 158, 68;
+      --bg: #effaf1; --primary: #2f9e44; --primary-dark: #237a34;
+      --soft: #f4fcf6; --soft-border: #cfeed6; --soft-hover: #e0f6e5;
+      --btn-soft: #cfeed6; --input-border: #a8e0b6; --shadow: 47, 158, 68;
     }
-
     [data-theme="lila"] {
-      --bg: #f6f0ff;
-      --primary: #7048e8;
-      --primary-dark: #5835c0;
-      --soft: #f8f4ff;
-      --soft-border: #e0d4fb;
-      --soft-hover: #ede4ff;
-      --hover-border: #b69ef3;
-      --btn-soft: #e0d4fb;
-      --btn-soft-hover: #c8b4f7;
-      --input-border: #c8b4f7;
-      --shadow: 112, 72, 232;
+      --bg: #f6f0ff; --primary: #7048e8; --primary-dark: #5835c0;
+      --soft: #f8f4ff; --soft-border: #e0d4fb; --soft-hover: #ede4ff;
+      --btn-soft: #e0d4fb; --input-border: #c8b4f7; --shadow: 112, 72, 232;
     }
 
-    /* ===== Grundlayout ===== */
+    /* ===== Grundlayout (nur Handy) ===== */
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
       background-color: var(--bg);
       color: #333;
       text-align: center;
-      padding: 20px;
       margin: 0;
+      padding: calc(env(safe-area-inset-top) + 66px) 14px calc(env(safe-area-inset-bottom) + 100px);
+      min-height: 100vh;
+      min-height: 100dvh;
       transition: background-color 0.3s;
     }
 
     .container {
-      background-color: white;
-      padding: 30px;
-      border-radius: 20px;
+      background: white;
+      padding: 24px 18px;
+      border-radius: 22px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      max-width: 650px;
-      margin: 30px auto;
+      max-width: 460px;
+      margin: 0 auto;
     }
 
     h1 {
       color: var(--primary);
-      margin-bottom: 20px;
+      font-size: 22px;
+      line-height: 1.3;
+      margin: 0 0 16px;
+      overflow-wrap: anywhere;
+      text-wrap: balance;
     }
 
     p {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 17px;
+      line-height: 1.65;
+      margin: 0 0 16px;
     }
 
     .date {
@@ -133,182 +95,296 @@
       color: var(--primary);
     }
 
-    img {
-      margin-top: 25px;
-      max-width: 100%;
-      border-radius: 12px;
+    img.photo {
+      margin-top: 8px;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .small-text {
       display: block;
-      margin-top: 8px;
+      margin-top: 6px;
       color: #888;
       font-size: 12px;
     }
 
-    /* Passwortseite */
-
-    #login {
-      max-width: 400px;
-      margin: 80px auto;
-      padding: 35px 25px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(var(--shadow), 0.15);
-    }
-
-    #login h1 {
-      font-size: 28px;
-    }
-
-    #password {
-      width: 100%;
-      padding: 14px;
-      margin: 15px 0;
-      border: 2px solid var(--input-border);
-      border-radius: 10px;
-      font-size: 20px;
-      text-align: center;
-      outline: none;
-    }
-
-    #password:focus {
-      border-color: var(--primary);
-    }
+    .page { display: none; }
+    .page.active { display: block; }
 
     button {
+      -webkit-appearance: none;
+      appearance: none;
+      font-family: inherit;
       background-color: var(--primary);
       color: white;
       border: none;
-      padding: 13px 25px;
-      border-radius: 10px;
-      font-size: 16px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-size: 17px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      touch-action: manipulation;
     }
 
-    button:hover {
-      background-color: var(--primary-dark);
+    button:active { background-color: var(--primary-dark); }
+
+    input, textarea {
+      -webkit-appearance: none;
+      appearance: none;
+      font-family: inherit;
+      width: 100%;
+      font-size: 16px; /* verhindert Zoom auf dem iPhone */
+      padding: 13px;
+      border: 2px solid var(--input-border);
+      border-radius: 12px;
+      background: white;
+      color: #333;
+      outline: none;
+    }
+
+    input:focus, textarea:focus { border-color: var(--primary); }
+
+    /* ===== Passwortseite ===== */
+
+    #login {
+      max-width: 400px;
+      margin: 20px auto 0;
+      padding: 30px 20px;
+      background: white;
+      border-radius: 22px;
+      box-shadow: 0 4px 20px rgba(var(--shadow), 0.15);
+    }
+
+    #login h1 { font-size: 24px; }
+
+    #password {
+      margin: 6px 0 16px;
+      font-size: 20px;
+      text-align: center;
     }
 
     #error {
       color: var(--primary);
       font-size: 14px;
       min-height: 20px;
+      margin: 14px 0 0;
     }
 
-    #website,
-    #memoryPage {
-      display: none;
-    }
+    /* ===== Timeline ===== */
 
-    /* Erinnerungs-Timeline */
+    .timeline-title { margin-top: 30px; }
 
-    .timeline-title {
-      margin-top: 40px;
-      color: var(--primary);
-    }
-
-    .timeline-intro {
-      color: #777;
-      font-size: 15px;
-    }
+    .timeline-intro { color: #777; font-size: 15px; }
 
     .memory-list {
       display: grid;
-      gap: 15px;
-      margin-top: 25px;
+      gap: 12px;
+      margin-top: 18px;
     }
 
     .memory-card {
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
       text-align: left;
-      padding: 20px;
+      padding: 14px;
       background: var(--soft);
       color: #333;
       border: 2px solid var(--soft-border);
-      border-radius: 15px;
-      transition: 0.2s;
+      border-radius: 16px;
     }
 
-    .memory-card:hover {
-      background: var(--soft-hover);
-      border-color: var(--hover-border);
-      transform: translateY(-2px);
-    }
+    .memory-card:active { background: var(--soft-hover); }
 
-    .memory-icon {
-      font-size: 30px;
-      flex-shrink: 0;
-    }
+    .memory-icon { font-size: 34px; flex-shrink: 0; line-height: 1; }
 
-    .memory-info {
-      flex: 1;
-    }
+    .memory-info { flex: 1; min-width: 0; }
 
     .memory-date {
       display: block;
       color: var(--primary);
-      font-size: 19px;
+      font-size: 17px;
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
 
     .memory-description {
       display: block;
       font-size: 14px;
       color: #666;
-      line-height: 1.5;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
     }
 
-    .arrow {
-      color: var(--primary);
-      font-size: 24px;
+    .arrow { color: var(--primary); font-size: 24px; }
+
+    .heart { color: var(--primary); font-size: 20px; margin-top: 18px; overflow-wrap: anywhere; }
+
+    /* Plus-Knopf */
+
+    #addButton {
+      position: fixed;
+      right: 18px;
+      bottom: calc(env(safe-area-inset-bottom) + 18px);
+      width: 62px;
+      height: 62px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 36px;
+      line-height: 1;
+      box-shadow: 0 4px 14px rgba(var(--shadow), 0.45);
+      z-index: 50;
     }
 
-    /* Einzelne Erinnerungsseite */
+    /* ===== Erinnerungsseite ===== */
 
     .back-button {
       background: var(--btn-soft);
       color: var(--primary-dark);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      font-size: 16px;
     }
 
-    .back-button:hover {
-      background: var(--btn-soft-hover);
-    }
+    .big-emoji { font-size: 56px; line-height: 1.2; margin-bottom: 6px; }
 
     .memory-content {
       background: var(--soft);
       border: 1px solid var(--soft-border);
-      border-radius: 15px;
-      padding: 25px 20px;
-      margin-top: 25px;
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin: 14px 0 0;
       text-align: left;
-      min-height: 180px;
     }
 
     .memory-content p {
       white-space: pre-wrap;
       overflow-wrap: anywhere;
       font-size: 17px;
+      margin: 0;
     }
 
-    .heart {
+    .memory-content p.empty { color: #999; font-style: italic; }
+
+    .edit-button { margin-top: 20px; width: 100%; }
+
+    /* ===== Editor ===== */
+
+    .field-label {
+      text-align: left;
+      font-weight: 600;
       color: var(--primary);
-      font-size: 24px;
-      margin-top: 20px;
+      margin: 20px 0 8px;
+      font-size: 15px;
     }
 
-    /* Farbwahl */
+    #emojiGrid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .emoji-option {
+      min-height: 48px;
+      padding: 0;
+      font-size: 26px;
+      background: var(--soft);
+      border: 2px solid var(--soft-border);
+      border-radius: 12px;
+    }
+
+    .emoji-option.selected {
+      border-color: var(--primary);
+      background: var(--soft-hover);
+    }
+
+    input[type="date"] {
+      min-height: 50px;
+      text-align: center;
+    }
+
+    textarea {
+      min-height: 190px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .save-button { width: 100%; margin-top: 24px; }
+
+    .danger {
+      width: 100%;
+      margin-top: 12px;
+      background: #fff;
+      color: #c92a2a;
+      border: 2px solid #ffc9c9;
+    }
+
+    /* ===== PIN-Fenster & Hinweis ===== */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-box {
+      background: white;
+      border-radius: 20px;
+      padding: 22px 18px;
+      width: 100%;
+      max-width: 380px;
+      max-height: 90vh;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .modal-box h2 { margin: 0 0 12px; color: var(--primary); font-size: 20px; }
+
+    .modal-box .hint { font-size: 13px; color: #777; line-height: 1.5; margin: 8px 0 12px; text-align: left; }
+
+    #pinInput { text-align: center; font-size: 22px; letter-spacing: 6px; }
+
+    #pinError { color: #c92a2a; font-size: 14px; min-height: 18px; margin: 8px 0 0; }
+
+    .modal-buttons { display: flex; gap: 10px; margin-top: 14px; }
+    .modal-buttons button { flex: 1; padding: 12px 8px; }
+    .modal-buttons .secondary { background: var(--btn-soft); color: var(--primary-dark); }
+
+    #tokenBlock { display: none; text-align: left; margin-top: 14px; }
+    #tokenBlock.show { display: block; }
+
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(env(safe-area-inset-bottom) + 96px);
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-size: 14px;
+      max-width: 90%;
+      text-align: center;
+      z-index: 300;
+      display: none;
+      line-height: 1.4;
+    }
+
+    /* ===== Farbwahl ===== */
 
     #themePicker {
       position: fixed;
-      top: 14px;
+      top: calc(env(safe-area-inset-top) + 12px);
       right: 14px;
       z-index: 100;
       display: flex;
@@ -337,27 +413,19 @@
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
     }
 
-    #themePanel.open {
-      display: grid;
-    }
+    #themePanel.open { display: grid; }
 
     .swatch {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
+      min-height: 46px;
       padding: 0;
       border-radius: 50%;
       border: 3px solid white;
       box-shadow: 0 0 0 2px #ddd;
-      transition: transform 0.15s;
     }
 
-    .swatch:hover {
-      transform: scale(1.12);
-    }
-
-    .swatch.active {
-      box-shadow: 0 0 0 3px #333;
-    }
+    .swatch.active { box-shadow: 0 0 0 3px #333; }
 
     .swatch[data-theme="blau"] { background: #1c7ed6; }
     .swatch[data-theme="pink"] { background: #d6336c; }
@@ -365,24 +433,6 @@
     .swatch[data-theme="rot"] { background: #e03131; }
     .swatch[data-theme="gruen"] { background: #2f9e44; }
     .swatch[data-theme="lila"] { background: #7048e8; }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 12px;
-      }
-
-      .container {
-        padding: 22px 17px;
-      }
-
-      #login {
-        margin: 70px auto 45px;
-      }
-
-      .memory-card {
-        padding: 15px 12px;
-      }
-    }
   </style>
 </head>
 
@@ -391,21 +441,21 @@
   <!-- Farbwahl -->
 
   <div id="themePicker">
-    <button id="themeToggle" type="button" aria-label="Farben ändern" title="Farben ändern">🎨</button>
+    <button id="themeToggle" type="button" aria-label="Farben ändern">🎨</button>
 
     <div id="themePanel" role="group" aria-label="Farbe wählen">
-      <button type="button" class="swatch" data-theme="blau" aria-label="Blau" title="Blau"></button>
-      <button type="button" class="swatch" data-theme="pink" aria-label="Pink" title="Pink"></button>
-      <button type="button" class="swatch" data-theme="gelb" aria-label="Gelb" title="Gelb"></button>
-      <button type="button" class="swatch" data-theme="rot" aria-label="Rot" title="Rot"></button>
-      <button type="button" class="swatch" data-theme="gruen" aria-label="Grün" title="Grün"></button>
-      <button type="button" class="swatch" data-theme="lila" aria-label="Lila" title="Lila"></button>
+      <button type="button" class="swatch" data-theme="blau" aria-label="Blau"></button>
+      <button type="button" class="swatch" data-theme="pink" aria-label="Pink"></button>
+      <button type="button" class="swatch" data-theme="gelb" aria-label="Gelb"></button>
+      <button type="button" class="swatch" data-theme="rot" aria-label="Rot"></button>
+      <button type="button" class="swatch" data-theme="gruen" aria-label="Grün"></button>
+      <button type="button" class="swatch" data-theme="lila" aria-label="Lila"></button>
     </div>
   </div>
 
   <!-- Passwortabfrage -->
 
-  <div id="login">
+  <div id="login" class="page active">
     <h1>Für Deepika ❤️</h1>
 
     <p>Ich habe etwas für dich vorbereitet. 🥹💕</p>
@@ -422,17 +472,15 @@
         required
       >
 
-      <br><br>
-
       <button type="submit">Öffnen ❤️</button>
     </form>
 
     <p id="error" aria-live="polite"></p>
   </div>
 
-  <!-- Hauptwebsite nach dem richtigen Passwort -->
+  <!-- Hauptseite -->
 
-  <div id="website">
+  <div id="website" class="page">
 
     <div class="container">
 
@@ -440,7 +488,7 @@
 
       <p>
         Wir sind zwar schon seit dem
-        <span class="date">06.09.</span> zusammen,
+        <span class="date">6. September 2026</span> zusammen,
         aber mir kommt es so vor, als würde unsere Geschichte
         gerade erst richtig beginnen. Wir haben noch eine ewig
         lange, wunderschöne Reise vor uns, auf die ich mich
@@ -465,82 +513,34 @@
         </small>
       </p>
 
-      <img src="deepikaprabh.jpg" alt="Foto von uns">
-
-      <!-- Timeline -->
+      <img class="photo" src="deepikaprabh.jpg" alt="Foto von uns">
 
       <h1 class="timeline-title">Unsere Geschichte ❤️</h1>
 
       <p class="timeline-intro">
-        Vier besondere Momente, die zu unserer Geschichte gehören.
-        Klick auf ein Datum, mein Schatz. 🥹💕
+        Unsere besonderen Momente, das Neueste steht oben.
+        Tipp auf einen Moment, mein Schatz. 🥹💕
       </p>
 
-      <div class="memory-list">
-
-        <button class="memory-card" onclick="openMemory('relationship')">
-          <span class="memory-icon">❤️</span>
-          <span class="memory-info">
-            <span class="memory-date">06.09.</span>
-            <span class="memory-description">
-              Der Tag, an dem wir zusammengekommen sind.
-            </span>
-          </span>
-          <span class="arrow">›</span>
-        </button>
-
-        <button class="memory-card" onclick="openMemory('snapchat')">
-          <span class="memory-icon">👻</span>
-          <span class="memory-info">
-            <span class="memory-date">10. Juli 2026</span>
-            <span class="memory-description">
-              Der Tag, an dem wir uns auf Snapchat geaddet haben.
-            </span>
-          </span>
-          <span class="arrow">›</span>
-        </button>
-
-        <button class="memory-card" onclick="openMemory('firstDate')">
-          <span class="memory-icon">🥹</span>
-          <span class="memory-info">
-            <span class="memory-date">21. Juli 2026</span>
-            <span class="memory-description">
-              Unser allererstes Treffen. 💗
-            </span>
-          </span>
-          <span class="arrow">›</span>
-        </button>
-
-        <button class="memory-card" onclick="openMemory('homeDate')">
-          <span class="memory-icon">🏡</span>
-          <span class="memory-info">
-            <span class="memory-date">26. Oktober 2026</span>
-            <span class="memory-description">
-              Unser erstes Treffen bei mir zu Hause. ❤️
-            </span>
-          </span>
-          <span class="arrow">›</span>
-        </button>
-
-      </div>
+      <div id="memoryList" class="memory-list"></div>
 
       <p class="heart">Für immer wir. ❤️</p>
 
     </div>
+
+    <button id="addButton" type="button" aria-label="Neue Erinnerung hinzufügen">+</button>
   </div>
 
-  <!-- Einzelne Erinnerungsseiten -->
+  <!-- Einzelne Erinnerung -->
 
-  <div id="memoryPage">
+  <div id="memoryPage" class="page">
     <div class="container">
 
-      <button class="back-button" onclick="backToTimeline()">
-        ← Zurück zu unserer Geschichte
-      </button>
+      <button class="back-button" id="memoryBack" type="button">← Zurück zu unserer Geschichte</button>
 
-      <div id="memoryEmoji" style="font-size: 55px;">❤️</div>
+      <div id="memoryEmoji" class="big-emoji">❤️</div>
 
-      <h1 id="memoryTitle">Unsere Erinnerung ❤️</h1>
+      <h1 id="memoryTitle"></h1>
 
       <p id="memoryDate" class="date"></p>
 
@@ -548,155 +548,497 @@
         <p id="memoryText"></p>
       </div>
 
-      <p class="heart">Diese Erinnerung gehört für immer uns. ❤️</p>
+      <p id="memoryFooter" class="heart"></p>
+
+      <button id="editButton" class="edit-button" type="button">✏️ Bearbeiten</button>
 
     </div>
   </div>
 
+  <!-- Neue Erinnerung / Bearbeiten -->
+
+  <div id="editorPage" class="page">
+    <div class="container">
+
+      <button class="back-button" id="editorBack" type="button">← Abbrechen</button>
+
+      <h1 id="editorHeading">Neue Erinnerung ❤️</h1>
+
+      <div class="field-label">1. Emoji aussuchen</div>
+      <div id="emojiPreview" class="big-emoji">❤️</div>
+      <div id="emojiGrid"></div>
+      <input id="emojiCustom" type="text" placeholder="oder eigenes Emoji eintippen" autocomplete="off">
+
+      <div class="field-label">2. Datum</div>
+      <input id="dateInput" type="date">
+
+      <div class="field-label">3. Kurze Beschreibung</div>
+      <input id="descInput" type="text" maxlength="80" placeholder="z. B. Unser erster Kuss" autocomplete="off">
+
+      <div class="field-label">4. Dein Text</div>
+      <textarea id="textInput" placeholder="Hier schreibst du deinen Text hinein …"></textarea>
+
+      <div class="field-label">5. Schlusszeile (kannst du ändern)</div>
+      <input id="footerInput" type="text" maxlength="80" autocomplete="off">
+
+      <button id="saveButton" class="save-button" type="button">💾 Speichern</button>
+      <button id="deleteButton" class="danger" type="button">🗑️ Erinnerung löschen</button>
+
+    </div>
+  </div>
+
+  <!-- PIN-Fenster -->
+
+  <div id="pinModal" class="modal">
+    <div class="modal-box">
+      <h2>🔐 PIN eingeben</h2>
+
+      <input id="pinInput" type="password" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="••">
+
+      <div id="tokenBlock">
+        <div class="hint">
+          Einmalig: GitHub-Token, damit die Erinnerung automatisch auf der
+          Website für alle gespeichert wird. Der Token bleibt nur auf diesem
+          Handy. Ohne Token wird nur auf diesem Handy gespeichert.
+        </div>
+        <input id="tokenInput" type="password" autocomplete="off" placeholder="github_pat_…">
+      </div>
+
+      <p id="pinError" aria-live="polite"></p>
+
+      <div class="modal-buttons">
+        <button id="pinCancel" class="secondary" type="button">Abbrechen</button>
+        <button id="pinOk" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" role="status"></div>
+
   <script>
-    // Farbwahl
+    // ===== Einstellungen =====
+
+    const SITE_PASSWORD = "100111";
+    const EDIT_PIN = "67";
+
+    const GITHUB_OWNER = "WastedKaiser";
+    const GITHUB_REPO = "Deepika";
+    const DATA_FILE = "memories.json";
+
+    const DEFAULT_FOOTER = "Diese Erinnerung gehört für immer uns. ❤️";
+
+    const MONTHS = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli",
+                    "August", "September", "Oktober", "November", "Dezember"];
+
+    const EMOJIS = ["❤️", "💕", "😍", "🥹", "😘", "💍", "🌹", "🎁", "🎂", "🏡", "✈️", "🍕",
+                    "🎬", "🌅", "🌙", "⭐", "👻", "📱", "☕", "🎶", "🌴", "🤗", "🔥", "💋"];
+
+    // Startdaten (werden benutzt, solange noch nichts gespeichert wurde)
+
+    const SEED = [
+      { id: "relationship", emoji: "❤️", date: "2026-09-06",
+        desc: "Wir sind zusammengekommen", text: "", footer: DEFAULT_FOOTER },
+      { id: "snapchat", emoji: "👻", date: "2026-07-10",
+        desc: "Wir haben uns auf Snapchat geaddet", text: "", footer: DEFAULT_FOOTER },
+      { id: "firstDate", emoji: "🥹", date: "2026-07-21",
+        desc: "Unser allererstes Treffen", text: "", footer: DEFAULT_FOOTER },
+      { id: "homeDate", emoji: "🏡", date: "2026-10-26",
+        desc: "Unser erstes Treffen bei mir zu Hause", text: "", footer: DEFAULT_FOOTER }
+    ];
+
+    // ===== Hilfsfunktionen =====
+
+    const $ = (id) => document.getElementById(id);
+
+    function show(pageId) {
+      document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+      $(pageId).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    function formatDate(iso) {
+      const parts = (iso || "").split("-");
+      if (parts.length !== 3) return "";
+      return parseInt(parts[2], 10) + ". " + MONTHS[parseInt(parts[1], 10) - 1] + " " + parts[0];
+    }
+
+    function firstSymbol(text) {
+      const value = (text || "").trim();
+      if (!value) return "";
+      if (window.Intl && Intl.Segmenter) {
+        const seg = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+        for (const part of seg.segment(value)) return part.segment;
+      }
+      return Array.from(value)[0];
+    }
+
+    let toastTimer;
+    function toast(message) {
+      const el = $("toast");
+      el.textContent = message;
+      el.style.display = "block";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { el.style.display = "none"; }, 5000);
+    }
+
+    function storageGet(key) {
+      try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
+
+    function storageSet(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) {}
+    }
+
+    // ===== Farbwahl =====
 
     const THEMES = ["blau", "pink", "gelb", "rot", "gruen", "lila"];
-    const DEFAULT_THEME = "blau";
-
-    const themeToggle = document.getElementById("themeToggle");
-    const themePanel = document.getElementById("themePanel");
-    const swatches = document.querySelectorAll(".swatch");
 
     function applyTheme(name) {
-      if (!THEMES.includes(name)) name = DEFAULT_THEME;
-
+      if (!THEMES.includes(name)) name = "blau";
       document.documentElement.setAttribute("data-theme", name);
-
-      swatches.forEach(function(swatch) {
-        swatch.classList.toggle("active", swatch.dataset.theme === name);
+      document.querySelectorAll(".swatch").forEach((s) => {
+        s.classList.toggle("active", s.dataset.theme === name);
       });
     }
 
-    function loadTheme() {
-      try {
-        return localStorage.getItem("deepika-theme") || DEFAULT_THEME;
-      } catch (e) {
-        return DEFAULT_THEME;
-      }
-    }
+    applyTheme(storageGet("deepika-theme") || "blau");
 
-    function saveTheme(name) {
+    $("themeToggle").addEventListener("click", (e) => {
+      e.stopPropagation();
+      $("themePanel").classList.toggle("open");
+    });
+
+    document.querySelectorAll(".swatch").forEach((s) => {
+      s.addEventListener("click", () => {
+        applyTheme(s.dataset.theme);
+        storageSet("deepika-theme", s.dataset.theme);
+        $("themePanel").classList.remove("open");
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!$("themePanel").contains(e.target)) $("themePanel").classList.remove("open");
+    });
+
+    // ===== Daten laden und speichern =====
+
+    let state = { updatedAt: 0, memories: SEED.map((m) => Object.assign({}, m)) };
+
+    function readLocal() {
       try {
-        localStorage.setItem("deepika-theme", name);
+        const data = JSON.parse(storageGet("deepika-memories"));
+        if (data && Array.isArray(data.memories)) return data;
       } catch (e) {}
+      return null;
     }
 
-    applyTheme(loadTheme());
+    async function readRemote() {
+      try {
+        const res = await fetch(DATA_FILE + "?t=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) return null;
+        const data = await res.json();
+        if (data && Array.isArray(data.memories)) return data;
+      } catch (e) {}
+      return null;
+    }
 
-    themeToggle.addEventListener("click", function(event) {
-      event.stopPropagation();
-      themePanel.classList.toggle("open");
-    });
+    async function loadData() {
+      const local = readLocal();
+      const remote = await readRemote();
 
-    swatches.forEach(function(swatch) {
-      swatch.addEventListener("click", function() {
-        applyTheme(swatch.dataset.theme);
-        saveTheme(swatch.dataset.theme);
-        themePanel.classList.remove("open");
+      // Die neuere Version gewinnt (GitHub Pages braucht nach dem Speichern kurz zum Aktualisieren)
+      const candidates = [local, remote].filter(Boolean);
+      if (candidates.length) {
+        candidates.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+        state = candidates[0];
+      }
+      renderList();
+    }
+
+    function saveLocal() {
+      storageSet("deepika-memories", JSON.stringify(state));
+    }
+
+    function utf8ToBase64(text) {
+      return btoa(unescape(encodeURIComponent(text)));
+    }
+
+    async function pushToGithub(token) {
+      const api = "https://api.github.com/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/contents/" + DATA_FILE;
+      const headers = {
+        "Authorization": "Bearer " + token,
+        "Accept": "application/vnd.github+json"
+      };
+
+      let sha;
+      const current = await fetch(api, { headers: headers, cache: "no-store" });
+      if (current.ok) {
+        sha = (await current.json()).sha;
+      } else if (current.status !== 404) {
+        throw new Error("GitHub-Fehler " + current.status);
+      }
+
+      const body = {
+        message: "Erinnerungen aktualisiert",
+        content: utf8ToBase64(JSON.stringify(state, null, 2))
+      };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(api, {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, headers),
+        body: JSON.stringify(body)
       });
-    });
 
-    document.addEventListener("click", function(event) {
-      if (!themePanel.contains(event.target)) {
-        themePanel.classList.remove("open");
+      if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+    }
+
+    async function persist(token) {
+      state.updatedAt = Date.now();
+      saveLocal();
+      renderList();
+
+      if (!token) {
+        toast("Gespeichert, aber nur auf diesem Handy (kein GitHub-Token).");
+        return;
       }
-    });
 
-    // Passwortabfrage
-
-    const form = document.getElementById("loginForm");
-    const passwordInput = document.getElementById("password");
-    const errorMessage = document.getElementById("error");
-
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      if (passwordInput.value === "100111") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("website").style.display = "block";
-
-        document.title = "Für Deepika ❤️";
-      } else {
-        errorMessage.textContent =
-          "Falsche Zahl 😜 Versuch es noch einmal! ❤️";
-
-        passwordInput.value = "";
-        passwordInput.focus();
+      try {
+        await pushToGithub(token);
+        toast("Gespeichert ✅ In ca. 1 Minute sieht man es auf der Website.");
+      } catch (e) {
+        toast("Nur auf diesem Handy gespeichert. GitHub hat nicht geklappt (" + e.message + ").");
       }
-    });
+    }
 
-    // HIER KANNST DU DEINE EIGENEN TEXTE EINTRAGEN ❤️
+    // ===== Timeline anzeigen =====
 
-    const memories = {
-      relationship: {
-        title: "Unser Beziehungsanfang ❤️",
-        date: "06.09.",
-        emoji: "❤️",
-        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+    function sortedMemories() {
+      return state.memories.slice().sort((a, b) => {
+        if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+        return String(b.id).localeCompare(String(a.id));
+      });
+    }
 
-Erzähl hier eure Geschichte vom Tag, an dem ihr zusammengekommen seid.`
-      },
+    function renderList() {
+      const list = $("memoryList");
+      list.textContent = "";
 
-      snapchat: {
-        title: "Der Anfang auf Snapchat 👻",
-        date: "10. Juli 2026",
-        emoji: "👻",
-        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+      sortedMemories().forEach((m) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "memory-card";
 
-Erzähl hier, wie ihr euch auf Snapchat geaddet habt und was du damals gedacht hast.`
-      },
+        const icon = document.createElement("span");
+        icon.className = "memory-icon";
+        icon.textContent = m.emoji;
 
-      firstDate: {
-        title: "Unser allererstes Treffen 🥹",
-        date: "21. Juli 2026",
-        emoji: "💗",
-        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+        const info = document.createElement("span");
+        info.className = "memory-info";
 
-Schreib hier, wie euer erstes Treffen war und wie du dich dabei gefühlt hast.`
-      },
+        const date = document.createElement("span");
+        date.className = "memory-date";
+        date.textContent = formatDate(m.date);
 
-      homeDate: {
-        title: "Unser Treffen bei mir zu Hause 🏡",
-        date: "26. Oktober 2026",
-        emoji: "🏡",
-        text: `HIER SCHREIBST DU DEINEN TEXT HINEIN.
+        const desc = document.createElement("span");
+        desc.className = "memory-description";
+        desc.textContent = m.desc;
 
-Schreib hier auf, was an diesem Tag passiert ist und warum er dir wichtig ist.`
-      }
-    };
+        info.append(date, desc);
 
-    // Erinnerung öffnen
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = "›";
+
+        card.append(icon, info, arrow);
+        card.addEventListener("click", () => openMemory(m.id));
+        list.appendChild(card);
+      });
+    }
+
+    // ===== Erinnerung ansehen =====
+
+    let currentId = null;
 
     function openMemory(id) {
-      const memory = memories[id];
+      const m = state.memories.find((x) => x.id === id);
+      if (!m) return;
 
-      if (!memory) return;
+      currentId = id;
+      $("memoryEmoji").textContent = m.emoji;
+      $("memoryTitle").textContent = m.desc;
+      $("memoryDate").textContent = formatDate(m.date);
 
-      document.getElementById("website").style.display = "none";
-      document.getElementById("memoryPage").style.display = "block";
+      const text = $("memoryText");
+      if (m.text && m.text.trim()) {
+        text.textContent = m.text;
+        text.className = "";
+      } else {
+        text.textContent = "Hier steht noch kein Text. Tipp unten auf „Bearbeiten“. ✏️";
+        text.className = "empty";
+      }
 
-      document.getElementById("memoryEmoji").textContent = memory.emoji;
-      document.getElementById("memoryTitle").textContent = memory.title;
-      document.getElementById("memoryDate").textContent = memory.date;
-      document.getElementById("memoryText").textContent = memory.text;
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      $("memoryFooter").textContent = m.footer || DEFAULT_FOOTER;
+      show("memoryPage");
     }
 
-    // Zurück zur Timeline
+    $("memoryBack").addEventListener("click", () => show("website"));
 
-    function backToTimeline() {
-      document.getElementById("memoryPage").style.display = "none";
-      document.getElementById("website").style.display = "block";
+    // ===== Editor =====
 
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    let editingId = null;
+    let selectedEmoji = "❤️";
+
+    function setEmoji(emoji) {
+      selectedEmoji = emoji;
+      $("emojiPreview").textContent = emoji;
+      document.querySelectorAll(".emoji-option").forEach((b) => {
+        b.classList.toggle("selected", b.dataset.emoji === emoji);
+      });
     }
+
+    EMOJIS.forEach((emoji) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "emoji-option";
+      b.dataset.emoji = emoji;
+      b.textContent = emoji;
+      b.addEventListener("click", () => { $("emojiCustom").value = ""; setEmoji(emoji); });
+      $("emojiGrid").appendChild(b);
+    });
+
+    $("emojiCustom").addEventListener("input", (e) => {
+      const symbol = firstSymbol(e.target.value);
+      if (symbol) setEmoji(symbol);
+    });
+
+    function todayIso() {
+      const d = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+    }
+
+    function openEditor(id) {
+      editingId = id || null;
+      const m = id ? state.memories.find((x) => x.id === id) : null;
+
+      $("editorHeading").textContent = m ? "Erinnerung bearbeiten ✏️" : "Neue Erinnerung ❤️";
+      $("emojiCustom").value = "";
+      setEmoji(m ? m.emoji : "❤️");
+      $("dateInput").value = m ? m.date : todayIso();
+      $("descInput").value = m ? m.desc : "";
+      $("textInput").value = m ? m.text : "";
+      $("footerInput").value = m ? (m.footer || DEFAULT_FOOTER) : DEFAULT_FOOTER;
+      $("deleteButton").style.display = m ? "block" : "none";
+
+      show("editorPage");
+    }
+
+    $("addButton").addEventListener("click", () => openEditor(null));
+    $("editButton").addEventListener("click", () => openEditor(currentId));
+
+    $("editorBack").addEventListener("click", () => {
+      if (editingId) openMemory(editingId); else show("website");
+    });
+
+    // ===== PIN-Abfrage =====
+
+    let pinAction = null;
+
+    function askPin(action) {
+      pinAction = action;
+      $("pinInput").value = "";
+      $("pinError").textContent = "";
+      $("tokenInput").value = "";
+      $("tokenBlock").classList.toggle("show", !storageGet("deepika-token"));
+      $("pinModal").classList.add("open");
+      setTimeout(() => $("pinInput").focus(), 50);
+    }
+
+    function closePin() {
+      $("pinModal").classList.remove("open");
+      pinAction = null;
+    }
+
+    $("pinCancel").addEventListener("click", closePin);
+
+    $("pinOk").addEventListener("click", () => {
+      if ($("pinInput").value !== EDIT_PIN) {
+        $("pinError").textContent = "Falscher PIN 😜";
+        $("pinInput").value = "";
+        $("pinInput").focus();
+        return;
+      }
+
+      const newToken = $("tokenInput").value.trim();
+      if (newToken) storageSet("deepika-token", newToken);
+
+      const token = storageGet("deepika-token");
+      const action = pinAction;
+      closePin();
+      if (action) action(token);
+    });
+
+    $("pinInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") $("pinOk").click();
+    });
+
+    // ===== Speichern und Löschen =====
+
+    $("saveButton").addEventListener("click", () => {
+      const desc = $("descInput").value.trim();
+      const date = $("dateInput").value;
+
+      if (!date) { toast("Bitte ein Datum aussuchen. 📅"); return; }
+      if (!desc) { toast("Bitte eine kurze Beschreibung schreiben. ✍️"); return; }
+
+      const entry = {
+        id: editingId || ("m" + Date.now()),
+        emoji: selectedEmoji,
+        date: date,
+        desc: desc,
+        text: $("textInput").value,
+        footer: $("footerInput").value.trim() || DEFAULT_FOOTER
+      };
+
+      askPin(async (token) => {
+        const index = state.memories.findIndex((x) => x.id === entry.id);
+        if (index >= 0) state.memories[index] = entry; else state.memories.push(entry);
+
+        show("website");
+        await persist(token);
+      });
+    });
+
+    $("deleteButton").addEventListener("click", () => {
+      if (!editingId) return;
+      if (!confirm("Diese Erinnerung wirklich löschen?")) return;
+
+      const id = editingId;
+      askPin(async (token) => {
+        state.memories = state.memories.filter((x) => x.id !== id);
+        show("website");
+        await persist(token);
+      });
+    });
+
+    // ===== Passwortabfrage =====
+
+    $("loginForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if ($("password").value === SITE_PASSWORD) {
+        show("website");
+        document.title = "Für Deepika ❤️";
+      } else {
+        $("error").textContent = "Falsche Zahl 😜 Versuch es noch einmal! ❤️";
+        $("password").value = "";
+        $("password").focus();
+      }
+    });
+
+    renderList();
+    loadData();
   </script>
 
 </body>
