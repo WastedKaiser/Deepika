@@ -713,7 +713,7 @@
     </div>
   </div>
 
-  <!-- Passwortabfrage -->
+  <!-- Passwortabfrage (Neu: Kein Formular mehr, das die Seite blockiert) -->
 
   <div id="login" class="page active">
     <h1>Für Deepika ❤️</h1>
@@ -722,18 +722,18 @@
 
     <p>Aber zuerst musst du unser kleines Geheimnis kennen. 🔐</p>
 
-    <form id="loginForm">
+    <div id="loginForm">
       <input
         type="password"
         id="password"
         placeholder="Unsere geheime Zahl ❤️"
         inputmode="numeric"
         autocomplete="off"
-        required
+        onkeydown="if(event.key==='Enter') unlockSite()"
       >
 
-      <button type="submit">Öffnen ❤️</button>
-    </form>
+      <button type="button" onclick="unlockSite()">Öffnen ❤️</button>
+    </div>
 
     <p id="error" aria-live="polite"></p>
   </div>
@@ -929,6 +929,26 @@
   <div id="toast" role="status"></div>
 
   <script>
+    // ===== Sofort-Login (funktioniert immer) =====
+    function unlockSite() {
+      var pwInput = document.getElementById("password");
+      var val = (pwInput.value || "").trim();
+
+      if (val === "100111") {
+        document.querySelectorAll(".page").forEach(function(p) {
+          p.classList.remove("active");
+        });
+        document.getElementById("website").classList.add("active");
+        window.scrollTo(0, 0);
+        document.title = "Für Deepika ❤️";
+        if (typeof startHeartRain === "function") startHeartRain();
+      } else {
+        document.getElementById("error").textContent = "Falsche Zahl 😜 Versuch es noch einmal! ❤️";
+        pwInput.value = "";
+        pwInput.focus();
+      }
+    }
+
     // ===== Einstellungen =====
 
     const SITE_PASSWORD = "100111";
@@ -947,4 +967,894 @@
                     "🎬", "🌅", "🌙", "⭐", "👻", "📱", "☕", "🎶", "🌴", "🤗", "🔥", "💋"];
 
     // 100 Gründe warum ich dich liebe Deepika
-    const LOVE_REASONS
+    const LOVE_REASONS = [
+      "Weil du die wunderschönsten braunen Augen der Welt hast. 👀❤️",
+      "Weil dein Lächeln selbst meinen schlechtesten Tag sofort rettet.",
+      "Weil ich bei dir zu 100 % ich selbst sein kann.",
+      "Weil sich jede Sekunde mit dir wie ein kleines Abenteuer anfühlt.",
+      "Weil du mich zum Lachen bringst wie kein anderer Mensch.",
+      "Weil du so unglaublich süß bist, wenn du verlegen wirst. 🥹",
+      "Weil deine Umarmungen sich wie Nachhausekommen anfühlen.",
+      "Weil ich mit dir den größten Blödsinn machen kann.",
+      "Weil du mir immer zuhörst, egal worum es geht.",
+      "Weil deine Stimme meine absolute Lieblingsmelodie ist.",
+      "Weil du mein Ruhepol bist, wenn alles um mich herum stressig wird.",
+      "Weil ich mich jeden Tag aufs Neue in dich verliebe.",
+      "Weil du so ein riesengroßes, warmes Herz hast.",
+      "Weil selbst Schweigen mit dir niemals unangenehm ist.",
+      "Weil du mich verstehst, oft sogar ganz ohne Worte.",
+      "Weil du mich zu einem besseren Menschen machst.",
+      "Weil jede Nachricht von dir mein Herz schneller schlagen lässt. 📱💕",
+      "Weil du so wunderbar verrückt bist – genau wie ich.",
+      "Weil deine Küsse einfach süchtig machen. 💋",
+      "Weil ich deine Art liebe, wie du mich anschaust.",
+      "Weil mit dir selbst der langweiligste Alltag besonders wird.",
+      "Weil du immer an mich glaubst.",
+      "Weil du meine beste Freundin und meine große Liebe zugleich bist.",
+      "Weil du so gut riechst, dass ich am liebsten nie wieder loslassen würde.",
+      "Weil ich es liebe, deine Hand zu halten.",
+      "Weil du meine kleinen Macken nicht nur akzeptierst, sondern liebst.",
+      "Weil der 06.09.2026 um 16:32 Uhr mein Leben für immer schöner gemacht hat.",
+      "Weil du so wunderschön aussiehst, selbst wenn du gerade erst aufgewacht bist.",
+      "Weil du genau weißt, wie du mich aufmuntern kannst.",
+      "Weil ich mir meine Zukunft nur noch mit dir vorstellen kann.",
+      "Weil du mein erster Gedanke am Morgen bist.",
+      "Weil du mein letzter Gedanke vor dem Einschlafen bist.",
+      "Weil du so süß schaust, wenn du dich über eine Kleinigkeit freust.",
+      "Weil es mir wehtut, wenn wir uns verabschieden müssen.",
+      "Weil du so ehrlich und aufrichtig zu mir bist.",
+      "Weil du mir das Gefühl gibst, der wichtigste Mensch der Welt zu sein.",
+      "Weil wir zusammen über die dümmsten Witze lachen können.",
+      "Weil du einfach unfassbar heiß bist. 🔥",
+      "Weil ich jede einzelne Erinnerung mit dir im Herzen trage.",
+      "Weil du meine Welt so viel bunter machst.",
+      "Weil ich es liebe, wenn du deinen Kopf an meine Schulter lehnst.",
+      "Weil du mich manchmal mit nur einem Blick komplett aus dem Konzept bringst.",
+      "Weil du so fürsorglich bist.",
+      "Weil ich mit dir über Gott und die Welt reden kann.",
+      "Weil du meinen Humor teilst.",
+      "Weil du mich immer wieder überraschst.",
+      "Weil du mir Geborgenheit schenkst.",
+      "Weil deine Nähe das Schönste auf der Welt ist.",
+      "Weil ich dich schon vermisse, sobald du zur Tür rausgehst.",
+      "Weil du mich so nimmst, wie ich bin.",
+      "Weil kein Liebeslied der Welt beschreiben kann, was ich für dich fühle.",
+      "Weil ich es liebe, dich glücklich zu sehen.",
+      "Weil dein Lachen einfach ansteckend ist.",
+      "Weil du so wundervoll zärtlich bist.",
+      "Weil du mein absoluter Lieblingsmensch bist.",
+      "Weil jede Berührung von dir bei mir Gänsehaut auslöst.",
+      "Weil wir zusammen ein unschlagbares Team sind.",
+      "Weil du meine Schwächen kennst und sie nie gegen mich nutzt.",
+      "Weil ich bei dir einfach alles um mich herum vergesse.",
+      "Weil du mein Herz zum Rasen bringst, wie am allerersten Tag.",
+      "Weil du so süß bist, wenn du müde wirst.",
+      "Weil ich es liebe, mit dir zu kuscheln.",
+      "Weil du immer für mich da bist, wenn ich dich brauche.",
+      "Weil du jeden Ort zu einem schönen Ort machst, sobald du da bist.",
+      "Weil du so einzigartig bist.",
+      "Weil ich stolz darauf bin, dein Freund zu sein.",
+      "Weil du meine Träume und Ziele unterstützt.",
+      "Weil du manchmal genauso ein kleiner Dickkopf bist wie ich. 😜",
+      "Weil du mein größtes Glück bist.",
+      "Weil ich dir blind vertrauen kann.",
+      "Weil du weißt, was ich denke, bevor ich es überhaupt ausspreche.",
+      "Weil jede Stunde mit dir wie im Flug vergeht.",
+      "Weil du so eine schöne Ausstrahlung hast.",
+      "Weil du mein Leben komplett auf den Kopf gestellt hast – im besten Sinne.",
+      "Weil ich es liebe, wie du meinen Namen sagst.",
+      "Weil du mir Kraft gibst.",
+      "Weil du selbst an grauen Regentagen mein Sonnenschein bist.",
+      "Weil ich mich auf jedes einzelne Treffen mit dir freue wie ein kleines Kind.",
+      "Weil du mir zeigst, was echte Liebe bedeutet.",
+      "Weil du mein Zuhause bist – egal wo wir gerade sind.",
+      "Weil ich deine Lippen liebe.",
+      "Weil du mich manchmal einfach sprachlos machst.",
+      "Weil du so aufmerksam bist und dir kleine Details merkst.",
+      "Weil ich mit dir alt werden möchte.",
+      "Weil du meine bessere Hälfte bist.",
+      "Weil kein Tag vergeht, an dem ich nicht dankbar für dich bin.",
+      "Weil du so süß bist, wenn du versuchst, ernst zu bleiben und trotzdem lächeln musst.",
+      "Weil wir uns auf Snapchat gefunden haben und daraus das Beste meines Lebens wurde. 👻❤️",
+      "Weil unser erstes Treffen am 21. Juli unvergesslich bleibt.",
+      "Weil du mein Herz gestohlen hast – und es gerne für immer behalten darfst.",
+      "Weil du mich mit deiner Art jeden Tag verzauberst.",
+      "Weil ich es liebe, dich einfach nur anzusehen.",
+      "Weil du meine Nummer 1 bist – heute, morgen und für immer.",
+      "Weil du selbst meine schlechte Laune in Sekunden wegzauberst.",
+      "Weil sich mit dir alles richtig anfühlt.",
+      "Weil du meine kleine perverse Sau bist. :P ❤️",
+      "Weil ich noch tausend weitere Abenteuer mit dir erleben will.",
+      "Weil du einfach perfekt für mich bist.",
+      "Weil meine Liebe zu dir jeden einzelnen Tag noch größer wird.",
+      "Weil du Deepika bist – und ich dich mehr liebe, als Worte jemals sagen könnten! ❤️"
+    ];
+
+    // Startdaten (werden benutzt, solange noch nichts gespeichert wurde)
+
+    const SEED = [
+      { id: "relationship", emoji: "❤️", date: "2026-09-06",
+        desc: "Wir sind zusammengekommen", text: "", footer: DEFAULT_FOOTER },
+      { id: "snapchat", emoji: "👻", date: "2026-07-10",
+        desc: "Wir haben uns auf Snapchat geaddet", text: "", footer: DEFAULT_FOOTER },
+      { id: "firstDate", emoji: "🥹", date: "2026-07-21",
+        desc: "Unser allererstes Treffen", text: "", footer: DEFAULT_FOOTER },
+      { id: "homeDate", emoji: "🏡", date: "2026-10-26",
+        desc: "Unser erstes Treffen bei mir zu Hause", text: "", footer: DEFAULT_FOOTER }
+    ];
+
+    // ===== Hilfsfunktionen =====
+
+    const $ = (id) => document.getElementById(id);
+
+    function show(pageId) {
+      document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+      $(pageId).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    function formatDate(iso) {
+      const parts = (iso || "").split("-");
+      if (parts.length !== 3) return "";
+      return parseInt(parts[2], 10) + ". " + MONTHS[parseInt(parts[1], 10) - 1] + " " + parts[0];
+    }
+
+    function firstSymbol(text) {
+      const value = (text || "").trim();
+      if (!value) return "";
+      if (window.Intl && Intl.Segmenter) {
+        const seg = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+        for (const part of seg.segment(value)) return part.segment;
+      }
+      return Array.from(value)[0];
+    }
+
+    let toastTimer;
+    function toast(message, ms) {
+      const el = $("toast");
+      el.textContent = message;
+      el.style.display = "block";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { el.style.display = "none"; }, ms || 5000);
+    }
+
+    function storageGet(key) {
+      try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
+
+    function storageSet(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) {}
+    }
+
+    // ===== Live-Timer (Seit 06.09.2026 um 16:32 Uhr) =====
+
+    const START_DATE = new Date(2026, 8, 6, 16, 32, 0); // Monat 8 = September (0-basiert)
+
+    function updateLiveTimer() {
+      const now = new Date();
+      let years = now.getFullYear() - START_DATE.getFullYear();
+      let months = now.getMonth() - START_DATE.getMonth();
+      let days = now.getDate() - START_DATE.getDate();
+      let hours = now.getHours() - START_DATE.getHours();
+      let minutes = now.getMinutes() - START_DATE.getMinutes();
+      let seconds = now.getSeconds() - START_DATE.getSeconds();
+
+      if (seconds < 0) {
+        seconds += 60;
+        minutes--;
+      }
+      if (minutes < 0) {
+        minutes += 60;
+        hours--;
+      }
+      if (hours < 0) {
+        hours += 24;
+        days--;
+      }
+      if (days < 0) {
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+        months--;
+      }
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+
+      // Falls das Datum in der Zukunft läge, auf 0 halten
+      if (years < 0) {
+        $("timerValue").textContent = "0 Monate, 0 Tage, 00:00:00";
+        return;
+      }
+
+      const parts = [];
+      if (years > 0) {
+        parts.push(years + (years === 1 ? " Jahr" : " Jahre"));
+      }
+      parts.push(months + (months === 1 ? " Monat" : " Monate"));
+      parts.push(days + (days === 1 ? " Tag" : " Tage"));
+
+      const timeStr =
+        hours + " Std " +
+        minutes + " Min " +
+        seconds + " Sek";
+
+      $("timerValue").innerHTML = parts.join(", ") + "<br>" + timeStr;
+    }
+
+    updateLiveTimer();
+    setInterval(updateLiveTimer, 1000);
+
+    // ===== Herz-Regen für 3 Sekunden =====
+
+    function startHeartRain() {
+      const heartSymbols = ["❤️", "💕", "💖", "💘", "💗", "💓"];
+      const duration = 3000; // 3 Sekunden lang neue Herzen erzeugen
+      const intervalTime = 80;
+
+      const rainInterval = setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart-rain";
+        heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.left = Math.random() * 95 + "vw";
+        heart.style.fontSize = (Math.random() * 18 + 18) + "px";
+        const fallDuration = (Math.random() * 1.5 + 1.8).toFixed(2);
+        heart.style.animationDuration = fallDuration + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, parseFloat(fallDuration) * 1000);
+      }, intervalTime);
+
+      setTimeout(() => {
+        clearInterval(rainInterval);
+      }, duration);
+    }
+
+    // ===== 100 Gründe Logik =====
+
+    let lastReasonIndex = -1;
+
+    $("reasonButton").addEventListener("click", () => {
+      let idx;
+      do {
+        idx = Math.floor(Math.random() * LOVE_REASONS.length);
+      } while (idx === lastReasonIndex && LOVE_REASONS.length > 1);
+
+      lastReasonIndex = idx;
+      $("reasonNumber").textContent = "Grund #" + (idx + 1) + " von " + LOVE_REASONS.length;
+      $("reasonText").textContent = LOVE_REASONS[idx];
+    });
+
+    // ===== Farbwahl =====
+
+    const THEMES = ["blau", "pink", "gelb", "rot", "gruen", "lila"];
+
+    function applyTheme(name) {
+      if (!THEMES.includes(name)) name = "blau";
+      document.documentElement.setAttribute("data-theme", name);
+      document.querySelectorAll(".swatch").forEach((s) => {
+        s.classList.toggle("active", s.dataset.theme === name);
+      });
+    }
+
+    applyTheme(storageGet("deepika-theme") || "blau");
+
+    $("themeToggle").addEventListener("click", (e) => {
+      e.stopPropagation();
+      $("themePanel").classList.toggle("open");
+    });
+
+    document.querySelectorAll(".swatch").forEach((s) => {
+      s.addEventListener("click", () => {
+        applyTheme(s.dataset.theme);
+        storageSet("deepika-theme", s.dataset.theme);
+        $("themePanel").classList.remove("open");
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!$("themePanel").contains(e.target)) $("themePanel").classList.remove("open");
+    });
+
+    // ===== Daten laden und speichern =====
+
+    let state = { updatedAt: 0, memories: SEED.map((m) => Object.assign({}, m)) };
+
+    function readLocal() {
+      try {
+        const data = JSON.parse(storageGet("deepika-memories"));
+        if (data && Array.isArray(data.memories)) return data;
+      } catch (e) {}
+      return null;
+    }
+
+    async function readRemote() {
+      try {
+        const res = await fetch(DATA_FILE + "?t=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) return null;
+        const data = await res.json();
+        if (data && Array.isArray(data.memories)) return data;
+      } catch (e) {}
+      return null;
+    }
+
+    async function loadData() {
+      const local = readLocal();
+      const remote = await readRemote();
+
+      const candidates = [local, remote].filter(Boolean);
+      if (candidates.length) {
+        candidates.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+        state = candidates[0];
+      }
+      renderList();
+    }
+
+    function saveLocal() {
+      storageSet("deepika-memories", JSON.stringify(state));
+    }
+
+    function utf8ToBase64(text) {
+      return btoa(unescape(encodeURIComponent(text)));
+    }
+
+    async function pushToGithub(token) {
+      const api = "https://api.github.com/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/contents/" + DATA_FILE;
+      const headers = {
+        "Authorization": "Bearer " + token,
+        "Accept": "application/vnd.github+json"
+      };
+
+      let sha;
+      const current = await fetch(api, { headers: headers, cache: "no-store" });
+      if (current.ok) {
+        sha = (await current.json()).sha;
+      } else if (current.status !== 404) {
+        throw new Error("GitHub-Fehler " + current.status);
+      }
+
+      const body = {
+        message: "Erinnerungen aktualisiert",
+        content: utf8ToBase64(JSON.stringify(state, null, 2))
+      };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(api, {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, headers),
+        body: JSON.stringify(body)
+      });
+
+      if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+    }
+
+    async function persist(token) {
+      state.updatedAt = Date.now();
+      saveLocal();
+      renderList();
+
+      if (!token) {
+        toast("Gespeichert, aber nur auf diesem Handy (kein GitHub-Token).");
+        return;
+      }
+
+      try {
+        await pushToGithub(token);
+        toast("Gespeichert ✅ In ca. 1 Minute sieht man es auf der Website.");
+      } catch (e) {
+        toast("Nur auf diesem Handy gespeichert. GitHub hat nicht geklappt (" + e.message + ").");
+      }
+    }
+
+    // ===== Timeline anzeigen =====
+
+    function sortedMemories() {
+      return state.memories.slice().sort((a, b) => {
+        if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+        return String(b.id).localeCompare(String(a.id));
+      });
+    }
+
+    function renderList() {
+      const list = $("memoryList");
+      list.textContent = "";
+
+      sortedMemories().forEach((m) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "memory-card";
+
+        const icon = document.createElement("span");
+        icon.className = "memory-icon";
+        icon.textContent = m.emoji;
+
+        const info = document.createElement("span");
+        info.className = "memory-info";
+
+        const date = document.createElement("span");
+        date.className = "memory-date";
+        date.textContent = formatDate(m.date);
+
+        const desc = document.createElement("span");
+        desc.className = "memory-description";
+        desc.textContent = m.desc;
+
+        info.append(date, desc);
+
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = "›";
+
+        card.append(icon, info, arrow);
+        card.addEventListener("click", () => openMemory(m.id));
+        list.appendChild(card);
+      });
+    }
+
+    // ===== Erinnerung ansehen =====
+
+    let currentId = null;
+
+    function openMemory(id) {
+      const m = state.memories.find((x) => x.id === id);
+      if (!m) return;
+
+      currentId = id;
+      $("memoryEmoji").textContent = m.emoji;
+      $("memoryTitle").textContent = m.desc;
+      $("memoryDate").textContent = formatDate(m.date);
+
+      const text = $("memoryText");
+      if (m.text && m.text.trim()) {
+        text.textContent = m.text;
+        text.className = "";
+      } else {
+        text.textContent = "Hier steht noch kein Text. Tipp unten auf „Bearbeiten“. ✏️";
+        text.className = "empty";
+      }
+
+      $("memoryFooter").textContent = m.footer || DEFAULT_FOOTER;
+      show("memoryPage");
+    }
+
+    $("memoryBack").addEventListener("click", () => show("website"));
+
+    // ===== Editor =====
+
+    let editingId = null;
+    let selectedEmoji = "❤️";
+
+    function setEmoji(emoji) {
+      selectedEmoji = emoji;
+      $("emojiPreview").textContent = emoji;
+      document.querySelectorAll(".emoji-option").forEach((b) => {
+        b.classList.toggle("selected", b.dataset.emoji === emoji);
+      });
+    }
+
+    EMOJIS.forEach((emoji) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "emoji-option";
+      b.dataset.emoji = emoji;
+      b.textContent = emoji;
+      b.addEventListener("click", () => { $("emojiCustom").value = ""; setEmoji(emoji); });
+      $("emojiGrid").appendChild(b);
+    });
+
+    $("emojiCustom").addEventListener("input", (e) => {
+      const symbol = firstSymbol(e.target.value);
+      if (symbol) setEmoji(symbol);
+    });
+
+    function todayIso() {
+      const d = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+    }
+
+    function openEditor(id) {
+      editingId = id || null;
+      const m = id ? state.memories.find((x) => x.id === id) : null;
+
+      $("editorHeading").textContent = m ? "Erinnerung bearbeiten ✏️" : "Neue Erinnerung ❤️";
+      $("emojiCustom").value = "";
+      setEmoji(m ? m.emoji : "❤️");
+      $("dateInput").value = m ? m.date : todayIso();
+      $("descInput").value = m ? m.desc : "";
+      $("textInput").value = m ? m.text : "";
+      $("footerInput").value = m ? (m.footer || DEFAULT_FOOTER) : DEFAULT_FOOTER;
+      $("deleteButton").style.display = m ? "block" : "none";
+
+      show("editorPage");
+    }
+
+    $("addButton").addEventListener("click", () => openEditor(null));
+    $("editButton").addEventListener("click", () => openEditor(currentId));
+
+    $("editorBack").addEventListener("click", () => {
+      if (editingId) openMemory(editingId); else show("website");
+    });
+
+    // ===== PIN-Abfrage =====
+
+    let pinAction = null;
+
+    function askPin(action) {
+      pinAction = action;
+      $("pinInput").value = "";
+      $("pinError").textContent = "";
+      $("tokenInput").value = "";
+      $("tokenBlock").classList.toggle("show", !storageGet("deepika-token"));
+      $("pinModal").classList.add("open");
+      setTimeout(() => $("pinInput").focus(), 50);
+    }
+
+    function closePin() {
+      $("pinModal").classList.remove("open");
+      pinAction = null;
+    }
+
+    $("pinCancel").addEventListener("click", closePin);
+
+    $("pinOk").addEventListener("click", () => {
+      if ($("pinInput").value !== EDIT_PIN) {
+        $("pinError").textContent = "Falscher PIN 😜";
+        $("pinInput").value = "";
+        $("pinInput").focus();
+        return;
+      }
+
+      const newToken = $("tokenInput").value.trim();
+      if (newToken) storageSet("deepika-token", newToken);
+
+      const token = storageGet("deepika-token");
+      const action = pinAction;
+      closePin();
+      if (action) action(token);
+    });
+
+    $("pinInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") $("pinOk").click();
+    });
+
+    // ===== Speichern und Löschen =====
+
+    $("saveButton").addEventListener("click", () => {
+      const desc = $("descInput").value.trim();
+      const date = $("dateInput").value;
+
+      if (!date) { toast("Bitte ein Datum aussuchen. 📅"); return; }
+      if (!desc) { toast("Bitte eine kurze Beschreibung schreiben. ✍️"); return; }
+
+      const entry = {
+        id: editingId || ("m" + Date.now()),
+        emoji: selectedEmoji,
+        date: date,
+        desc: desc,
+        text: $("textInput").value,
+        footer: $("footerInput").value.trim() || DEFAULT_FOOTER
+      };
+
+      askPin(async (token) => {
+        const index = state.memories.findIndex((x) => x.id === entry.id);
+        if (index >= 0) state.memories[index] = entry; else state.memories.push(entry);
+
+        show("website");
+        await persist(token);
+      });
+    });
+
+    $("deleteButton").addEventListener("click", () => {
+      if (!editingId) return;
+      if (!confirm("Diese Erinnerung wirklich löschen?")) return;
+
+      const id = editingId;
+      askPin(async (token) => {
+        state.memories = state.memories.filter((x) => x.id !== id);
+        show("website");
+        await persist(token);
+      });
+    });
+
+    // ===== Fotos und Videos =====
+
+    const MEDIA_FILE = "media.json";
+    const MAX_UPLOAD_MB = 50;
+
+    let media = { items: [] };
+    let sessionItems = [];
+    let viewList = [];
+    let viewIndex = 0;
+    let uploadKind = "photo";
+    let uploadToken = null;
+
+    async function loadMedia() {
+      try {
+        const res = await fetch(MEDIA_FILE + "?t=" + Date.now(), { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.items)) media = data;
+        }
+      } catch (e) {}
+      renderMedia();
+    }
+
+    function itemsOf(kind) {
+      const seen = new Set();
+      return sessionItems.concat(media.items)
+        .filter((i) => i.type === kind && !seen.has(i.id) && seen.add(i.id))
+        .sort((a, b) => (b.added || 0) - (a.added || 0));
+    }
+
+    function renderGrid(kind) {
+      const grid = $(kind === "photo" ? "photoGrid" : "videoGrid");
+      const list = itemsOf(kind);
+
+      grid.textContent = "";
+      $(kind === "photo" ? "photoEmpty" : "videoEmpty").style.display = list.length ? "none" : "block";
+
+      list.forEach((item, index) => {
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        tile.setAttribute("role", "button");
+        tile.tabIndex = 0;
+
+        const src = item.src || item.file;
+
+        if (kind === "photo") {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = "Foto";
+          img.loading = "lazy";
+          tile.appendChild(img);
+        } else {
+          const video = document.createElement("video");
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = "metadata";
+          video.src = src + "#t=0.1";
+          tile.appendChild(video);
+
+          const play = document.createElement("span");
+          play.className = "play";
+          play.textContent = "▶";
+          tile.appendChild(play);
+        }
+
+        tile.addEventListener("click", () => openViewer(kind, index));
+        grid.appendChild(tile);
+      });
+    }
+
+    function renderMedia() {
+      renderGrid("photo");
+      renderGrid("video");
+    }
+
+    $("photoButton").addEventListener("click", () => show("photoPage"));
+    $("videoButton").addEventListener("click", () => show("videoPage"));
+    $("photoBack").addEventListener("click", () => show("website"));
+    $("videoBack").addEventListener("click", () => show("website"));
+
+    // Großansicht
+
+    function showViewerItem() {
+      const item = viewList[viewIndex];
+      const body = $("viewerBody");
+      body.textContent = "";
+      if (!item) return;
+
+      const src = item.src || item.file;
+
+      if (item.type === "photo") {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Foto";
+        img.style.maxHeight = "calc(100dvh - 90px)";
+        body.appendChild(img);
+        $("viewerControls").classList.remove("show");
+      } else {
+        const video = document.createElement("video");
+        video.src = src;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.setAttribute("playsinline", "");
+        video.style.maxHeight = "calc(100dvh - 190px)";
+        body.appendChild(video);
+        $("viewerControls").classList.add("show");
+      }
+
+      $("viewerPrev").disabled = viewIndex <= 0;
+      $("viewerNext").disabled = viewIndex >= viewList.length - 1;
+    }
+
+    function openViewer(kind, index) {
+      viewList = itemsOf(kind);
+      viewIndex = index;
+      showViewerItem();
+      $("viewer").classList.add("open");
+    }
+
+    function closeViewer() {
+      const video = $("viewerBody").querySelector("video");
+      if (video) { video.pause(); video.removeAttribute("src"); video.load(); }
+      $("viewerBody").textContent = "";
+      $("viewer").classList.remove("open");
+    }
+
+    function stepViewer(delta) {
+      const next = viewIndex + delta;
+      if (next < 0 || next >= viewList.length) return;
+      const video = $("viewerBody").querySelector("video");
+      if (video) video.pause();
+      viewIndex = next;
+      showViewerItem();
+    }
+
+    function skipVideo(seconds) {
+      const video = $("viewerBody").querySelector("video");
+      if (!video) return;
+      const end = isFinite(video.duration) ? video.duration : Infinity;
+      video.currentTime = Math.max(0, Math.min(end, video.currentTime + seconds));
+    }
+
+    $("viewerClose").addEventListener("click", closeViewer);
+    $("viewerPrev").addEventListener("click", () => stepViewer(-1));
+    $("viewerNext").addEventListener("click", () => stepViewer(1));
+    $("skipBack").addEventListener("click", () => skipVideo(-10));
+    $("skipFwd").addEventListener("click", () => skipVideo(10));
+
+    // Hochladen
+
+    function ghUrl(path) {
+      return "https://api.github.com/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/contents/" + path;
+    }
+
+    function ghHeaders(token) {
+      return { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" };
+    }
+
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(",")[1]);
+        reader.onerror = () => reject(new Error("Datei nicht lesbar"));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function isKind(file, kind) {
+      const prefix = kind === "photo" ? "image/" : "video/";
+      if (file.type) return file.type.indexOf(prefix) === 0;
+      const re = kind === "photo" ? /\.(jpe?g|png|gif|webp|heic|heif|avif)$/i : /\.(mp4|mov|m4v|webm)$/i;
+      return re.test(file.name || "");
+    }
+
+    function extOf(file, kind) {
+      const m = /\.([a-z0-9]{2,5})$/i.exec(file.name || "");
+      return m ? m[1].toLowerCase() : (kind === "photo" ? "jpg" : "mp4");
+    }
+
+    async function putFile(path, base64, token) {
+      const res = await fetch(ghUrl(path), {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
+        body: JSON.stringify({ message: "Datei hochgeladen", content: base64 })
+      });
+      if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+    }
+
+    async function updateManifest(newItems, token) {
+      let items = [];
+      let sha;
+
+      const current = await fetch(ghUrl(MEDIA_FILE), { headers: ghHeaders(token), cache: "no-store" });
+      if (current.ok) {
+        const json = await current.json();
+        sha = json.sha;
+        const text = decodeURIComponent(escape(atob(json.content.replace(/\n/g, ""))));
+        const parsed = JSON.parse(text);
+        if (parsed && Array.isArray(parsed.items)) items = parsed.items;
+      } else if (current.status !== 404) {
+        throw new Error("GitHub-Fehler " + current.status);
+      }
+
+      const body = {
+        message: "Fotos und Videos aktualisiert",
+        content: utf8ToBase64(JSON.stringify({ items: items.concat(newItems) }, null, 2))
+      };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(ghUrl(MEDIA_FILE), {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+    }
+
+    async function uploadFiles(files, kind, token) {
+      const label = kind === "photo" ? "Foto" : "Video";
+      const maxBytes = MAX_UPLOAD_MB * 1024 * 1024;
+
+      const valid = files.filter((f) => isKind(f, kind));
+      const wrongType = files.length - valid.length;
+      const small = valid.filter((f) => f.size <= maxBytes);
+      const tooBig = valid.length - small.length;
+
+      if (!small.length) {
+        toast(wrongType ? "Hier sind nur " + label + "s erlaubt. 🙂" : "Die Datei ist zu groß (max. " + MAX_UPLOAD_MB + " MB).");
+        return;
+      }
+
+      const uploaded = [];
+      let failed = 0;
+
+      for (let i = 0; i < small.length; i++) {
+        toast("Lade hoch " + (i + 1) + "/" + small.length + " … bitte warten ⏳", 120000);
+
+        const file = small[i];
+        const id = Date.now() + "-" + i;
+        const path = (kind === "photo" ? "photos/" : "videos/") + id + "." + extOf(file, kind);
+
+        try {
+          await putFile(path, await fileToBase64(file), token);
+          uploaded.push({ id: id, type: kind, file: path, added: Date.now(), src: URL.createObjectURL(file) });
+        } catch (e) {
+          failed++;
+        }
+      }
+
+      if (uploaded.length) {
+        try {
+          await updateManifest(uploaded.map((u) => ({ id: u.id, type: u.type, file: u.file, added: u.added })), token);
+          sessionItems = sessionItems.concat(uploaded);
+          renderMedia();
+
+          let msg = "Hochgeladen ✅ " + uploaded.length + " " + label + (uploaded.length > 1 ? "s" : "") + ". Für alle sichtbar in ca. 1 Minute.";
+          if (failed || wrongType || tooBig) msg += " (" + (failed + wrongType + tooBig) + " übersprungen)";
+          toast(msg, 8000);
+        } catch (e) {
+          toast("Dateien hochgeladen, aber die Liste konnte nicht gespeichert werden (" + e.message + ").", 8000);
+        }
+      } else {
+        toast("Hochladen hat nicht geklappt. Prüfe den Token und deine Internetverbindung.", 8000);
+      }
+    }
+
+    function startUpload(kind) {
+      askPin((token) => {
+        if (!token) {
+          toast("Zum Hochladen brauchst du den GitHub-Token (einmalig im PIN-Fenster).", 7000);
+          return;
+        }
+
+        uploadKind = kind;
+        uploadToken = token;
+
+        const input = $("fileInput");
+        input.accept = kind === "photo" ? "image/*" : "video/*";
+        input.value = "";
+        input.click();
+      });
+    }
+
+    $("fileInput").addEventListener("change", (e) => {
+      const files = Array.from(e.target.files || []);
+      if (files.length) uploadFiles(files, uploadKind, uploadToken);
+    });
+
+    $("photoUpload").addEventListener("click", () => startUpload("photo"));
+    $("videoUpload").addEventListener("click", () => startUpload("video"));
+
+    renderList();
+    loadData();
+    loadMedia();
+  </script>
+</body>
+</html>
