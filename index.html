@@ -223,12 +223,20 @@
 
     .heart { color: var(--primary); font-size: 20px; margin-top: 18px; overflow-wrap: anywhere; }
 
-    /* Plus-Knopf */
+    /* Knöpfe unten rechts: Video, Foto, Plus */
 
-    #addButton {
+    #fabs {
       position: fixed;
       right: 18px;
       bottom: calc(env(safe-area-inset-bottom) + 18px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      z-index: 50;
+    }
+
+    .fab {
       width: 62px;
       height: 62px;
       padding: 0;
@@ -236,7 +244,13 @@
       font-size: 36px;
       line-height: 1;
       box-shadow: 0 4px 14px rgba(var(--shadow), 0.45);
-      z-index: 50;
+    }
+
+    .fab.small {
+      width: 52px;
+      height: 52px;
+      min-height: 52px;
+      font-size: 24px;
     }
 
     /* ===== Erinnerungsseite ===== */
@@ -380,6 +394,133 @@
       line-height: 1.4;
     }
 
+    /* ===== Galerie ===== */
+
+    .gallery { column-gap: 6px; margin-top: 6px; }
+    .gallery.photos { column-count: 3; }
+    .gallery.videos { column-count: 2; }
+
+    .tile {
+      position: relative;
+      display: block;
+      break-inside: avoid;
+      margin-bottom: 6px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--soft);
+      cursor: pointer;
+    }
+
+    .tile img, .tile video {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .tile .play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      pointer-events: none;
+    }
+
+    .empty-note { color: #888; font-size: 15px; margin: 24px 0 8px; }
+
+    .hidden-input {
+      position: fixed;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    /* Großansicht */
+
+    #viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 400;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #viewer.open { display: flex; }
+
+    #viewerBody {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(env(safe-area-inset-top) + 62px) 6px 6px;
+    }
+
+    #viewerBody img, #viewerBody video {
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+      object-fit: contain;
+    }
+
+    #viewerClose {
+      position: absolute;
+      top: calc(env(safe-area-inset-top) + 10px);
+      right: 12px;
+      width: 46px;
+      height: 46px;
+      min-height: 46px;
+      padding: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+      font-size: 22px;
+      z-index: 2;
+    }
+
+    .viewer-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 64px;
+      min-height: 64px;
+      padding: 0;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 32px;
+      z-index: 2;
+    }
+
+    #viewerPrev { left: 4px; }
+    #viewerNext { right: 4px; }
+    .viewer-nav[disabled] { opacity: 0.25; }
+
+    #viewerControls {
+      display: none;
+      gap: 12px;
+      padding: 10px 12px calc(env(safe-area-inset-bottom) + 14px);
+    }
+
+    #viewerControls.show { display: flex; }
+
+    #viewerControls button {
+      background: rgba(255, 255, 255, 0.22);
+      padding: 10px 20px;
+    }
+
     /* ===== Farbwahl ===== */
 
     #themePicker {
@@ -519,7 +660,7 @@
 
       <p class="timeline-intro">
         Unsere besonderen Momente, das Neueste steht oben.
-        Tipp auf einen Moment, meine perverse Sau du 🥹💕
+        Tipp auf einen Moment, mein Schatz. 🥹💕
       </p>
 
       <div id="memoryList" class="memory-list"></div>
@@ -528,7 +669,11 @@
 
     </div>
 
-    <button id="addButton" type="button" aria-label="Neue Erinnerung hinzufügen">+</button>
+    <div id="fabs">
+      <button id="videoButton" class="fab small" type="button" aria-label="Videos">🎬</button>
+      <button id="photoButton" class="fab small" type="button" aria-label="Fotos">🖼️</button>
+      <button id="addButton" class="fab" type="button" aria-label="Neue Erinnerung hinzufügen">+</button>
+    </div>
   </div>
 
   <!-- Einzelne Erinnerung -->
@@ -584,6 +729,45 @@
       <button id="saveButton" class="save-button" type="button">💾 Speichern</button>
       <button id="deleteButton" class="danger" type="button">🗑️ Erinnerung löschen</button>
 
+    </div>
+  </div>
+
+  <!-- Fotos -->
+
+  <div id="photoPage" class="page">
+    <div class="container">
+      <button class="back-button" id="photoBack" type="button">← Zurück zu unserer Geschichte</button>
+      <h1>Unsere Fotos 📸</h1>
+      <div id="photoGrid" class="gallery photos"></div>
+      <p id="photoEmpty" class="empty-note">Noch keine Fotos. Lade unten euer erstes hoch. 💕</p>
+      <button id="photoUpload" class="save-button" type="button">📤 Selber hochladen</button>
+    </div>
+  </div>
+
+  <!-- Videos -->
+
+  <div id="videoPage" class="page">
+    <div class="container">
+      <button class="back-button" id="videoBack" type="button">← Zurück zu unserer Geschichte</button>
+      <h1>Unsere Videos 🎬</h1>
+      <div id="videoGrid" class="gallery videos"></div>
+      <p id="videoEmpty" class="empty-note">Noch keine Videos. Lade unten euer erstes hoch. 💕</p>
+      <button id="videoUpload" class="save-button" type="button">📤 Selber hochladen</button>
+    </div>
+  </div>
+
+  <input id="fileInput" class="hidden-input" type="file" multiple>
+
+  <!-- Großansicht für Fotos und Videos -->
+
+  <div id="viewer">
+    <button id="viewerClose" type="button" aria-label="Schließen">✕</button>
+    <button id="viewerPrev" class="viewer-nav" type="button" aria-label="Zurück">‹</button>
+    <div id="viewerBody"></div>
+    <button id="viewerNext" class="viewer-nav" type="button" aria-label="Weiter">›</button>
+    <div id="viewerControls">
+      <button id="skipBack" type="button">⏪ 10 s</button>
+      <button id="skipFwd" type="button">10 s ⏩</button>
     </div>
   </div>
 
@@ -673,12 +857,12 @@
     }
 
     let toastTimer;
-    function toast(message) {
+    function toast(message, ms) {
       const el = $("toast");
       el.textContent = message;
       el.style.display = "block";
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => { el.style.display = "none"; }, 5000);
+      toastTimer = setTimeout(() => { el.style.display = "none"; }, ms || 5000);
     }
 
     function storageGet(key) {
@@ -1037,8 +1221,301 @@
       }
     });
 
+    // ===== Fotos und Videos =====
+
+    const MEDIA_FILE = "media.json";
+    const MAX_UPLOAD_MB = 50;
+
+    let media = { items: [] };   // aus media.json (GitHub)
+    let sessionItems = [];       // gerade hochgeladen, sofort sichtbar
+    let viewList = [];
+    let viewIndex = 0;
+    let uploadKind = "photo";
+    let uploadToken = null;
+
+    async function loadMedia() {
+      try {
+        const res = await fetch(MEDIA_FILE + "?t=" + Date.now(), { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.items)) media = data;
+        }
+      } catch (e) {}
+      renderMedia();
+    }
+
+    function itemsOf(kind) {
+      const seen = new Set();
+      return sessionItems.concat(media.items)
+        .filter((i) => i.type === kind && !seen.has(i.id) && seen.add(i.id))
+        .sort((a, b) => (b.added || 0) - (a.added || 0));
+    }
+
+    function renderGrid(kind) {
+      const grid = $(kind === "photo" ? "photoGrid" : "videoGrid");
+      const list = itemsOf(kind);
+
+      grid.textContent = "";
+      $(kind === "photo" ? "photoEmpty" : "videoEmpty").style.display = list.length ? "none" : "block";
+
+      list.forEach((item, index) => {
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        tile.setAttribute("role", "button");
+        tile.tabIndex = 0;
+
+        const src = item.src || item.file;
+
+        if (kind === "photo") {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = "Foto";
+          img.loading = "lazy";
+          tile.appendChild(img);
+        } else {
+          const video = document.createElement("video");
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = "metadata";
+          video.src = src + "#t=0.1";
+          tile.appendChild(video);
+
+          const play = document.createElement("span");
+          play.className = "play";
+          play.textContent = "▶";
+          tile.appendChild(play);
+        }
+
+        tile.addEventListener("click", () => openViewer(kind, index));
+        grid.appendChild(tile);
+      });
+    }
+
+    function renderMedia() {
+      renderGrid("photo");
+      renderGrid("video");
+    }
+
+    $("photoButton").addEventListener("click", () => show("photoPage"));
+    $("videoButton").addEventListener("click", () => show("videoPage"));
+    $("photoBack").addEventListener("click", () => show("website"));
+    $("videoBack").addEventListener("click", () => show("website"));
+
+    // Großansicht
+
+    function showViewerItem() {
+      const item = viewList[viewIndex];
+      const body = $("viewerBody");
+      body.textContent = "";
+      if (!item) return;
+
+      const src = item.src || item.file;
+
+      if (item.type === "photo") {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Foto";
+        img.style.maxHeight = "calc(100dvh - 90px)";
+        body.appendChild(img);
+        $("viewerControls").classList.remove("show");
+      } else {
+        const video = document.createElement("video");
+        video.src = src;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.setAttribute("playsinline", "");
+        video.style.maxHeight = "calc(100dvh - 190px)";
+        body.appendChild(video);
+        $("viewerControls").classList.add("show");
+      }
+
+      $("viewerPrev").disabled = viewIndex <= 0;
+      $("viewerNext").disabled = viewIndex >= viewList.length - 1;
+    }
+
+    function openViewer(kind, index) {
+      viewList = itemsOf(kind);
+      viewIndex = index;
+      showViewerItem();
+      $("viewer").classList.add("open");
+    }
+
+    function closeViewer() {
+      const video = $("viewerBody").querySelector("video");
+      if (video) { video.pause(); video.removeAttribute("src"); video.load(); }
+      $("viewerBody").textContent = "";
+      $("viewer").classList.remove("open");
+    }
+
+    function stepViewer(delta) {
+      const next = viewIndex + delta;
+      if (next < 0 || next >= viewList.length) return;
+      const video = $("viewerBody").querySelector("video");
+      if (video) video.pause();
+      viewIndex = next;
+      showViewerItem();
+    }
+
+    function skipVideo(seconds) {
+      const video = $("viewerBody").querySelector("video");
+      if (!video) return;
+      const end = isFinite(video.duration) ? video.duration : Infinity;
+      video.currentTime = Math.max(0, Math.min(end, video.currentTime + seconds));
+    }
+
+    $("viewerClose").addEventListener("click", closeViewer);
+    $("viewerPrev").addEventListener("click", () => stepViewer(-1));
+    $("viewerNext").addEventListener("click", () => stepViewer(1));
+    $("skipBack").addEventListener("click", () => skipVideo(-10));
+    $("skipFwd").addEventListener("click", () => skipVideo(10));
+
+    // Hochladen (Originaldatei, ohne Verkleinern oder Umwandeln)
+
+    function ghUrl(path) {
+      return "https://api.github.com/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/contents/" + path;
+    }
+
+    function ghHeaders(token) {
+      return { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" };
+    }
+
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(",")[1]);
+        reader.onerror = () => reject(new Error("Datei nicht lesbar"));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function isKind(file, kind) {
+      const prefix = kind === "photo" ? "image/" : "video/";
+      if (file.type) return file.type.indexOf(prefix) === 0;
+      const re = kind === "photo" ? /\.(jpe?g|png|gif|webp|heic|heif|avif)$/i : /\.(mp4|mov|m4v|webm)$/i;
+      return re.test(file.name || "");
+    }
+
+    function extOf(file, kind) {
+      const m = /\.([a-z0-9]{2,5})$/i.exec(file.name || "");
+      return m ? m[1].toLowerCase() : (kind === "photo" ? "jpg" : "mp4");
+    }
+
+    async function putFile(path, base64, token) {
+      const res = await fetch(ghUrl(path), {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
+        body: JSON.stringify({ message: "Datei hochgeladen", content: base64 })
+      });
+      if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+    }
+
+    async function updateManifest(newItems, token) {
+      let items = [];
+      let sha;
+
+      const current = await fetch(ghUrl(MEDIA_FILE), { headers: ghHeaders(token), cache: "no-store" });
+      if (current.ok) {
+        const json = await current.json();
+        sha = json.sha;
+        const text = decodeURIComponent(escape(atob(json.content.replace(/\n/g, ""))));
+        const parsed = JSON.parse(text);
+        if (parsed && Array.isArray(parsed.items)) items = parsed.items;
+      } else if (current.status !== 404) {
+        throw new Error("GitHub-Fehler " + current.status);
+      }
+
+      const body = {
+        message: "Fotos und Videos aktualisiert",
+        content: utf8ToBase64(JSON.stringify({ items: items.concat(newItems) }, null, 2))
+      };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(ghUrl(MEDIA_FILE), {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+    }
+
+    async function uploadFiles(files, kind, token) {
+      const label = kind === "photo" ? "Foto" : "Video";
+      const maxBytes = MAX_UPLOAD_MB * 1024 * 1024;
+
+      const valid = files.filter((f) => isKind(f, kind));
+      const wrongType = files.length - valid.length;
+      const small = valid.filter((f) => f.size <= maxBytes);
+      const tooBig = valid.length - small.length;
+
+      if (!small.length) {
+        toast(wrongType ? "Hier sind nur " + label + "s erlaubt. 🙂" : "Die Datei ist zu groß (max. " + MAX_UPLOAD_MB + " MB).");
+        return;
+      }
+
+      const uploaded = [];
+      let failed = 0;
+
+      for (let i = 0; i < small.length; i++) {
+        toast("Lade hoch " + (i + 1) + "/" + small.length + " … bitte warten ⏳", 120000);
+
+        const file = small[i];
+        const id = Date.now() + "-" + i;
+        const path = (kind === "photo" ? "photos/" : "videos/") + id + "." + extOf(file, kind);
+
+        try {
+          await putFile(path, await fileToBase64(file), token);
+          uploaded.push({ id: id, type: kind, file: path, added: Date.now(), src: URL.createObjectURL(file) });
+        } catch (e) {
+          failed++;
+        }
+      }
+
+      if (uploaded.length) {
+        try {
+          await updateManifest(uploaded.map((u) => ({ id: u.id, type: u.type, file: u.file, added: u.added })), token);
+          sessionItems = sessionItems.concat(uploaded);
+          renderMedia();
+
+          let msg = "Hochgeladen ✅ " + uploaded.length + " " + label + (uploaded.length > 1 ? "s" : "") + ". Für alle sichtbar in ca. 1 Minute.";
+          if (failed || wrongType || tooBig) msg += " (" + (failed + wrongType + tooBig) + " übersprungen)";
+          toast(msg, 8000);
+        } catch (e) {
+          toast("Dateien hochgeladen, aber die Liste konnte nicht gespeichert werden (" + e.message + ").", 8000);
+        }
+      } else {
+        toast("Hochladen hat nicht geklappt. Prüfe den Token und deine Internetverbindung.", 8000);
+      }
+    }
+
+    function startUpload(kind) {
+      askPin((token) => {
+        if (!token) {
+          toast("Zum Hochladen brauchst du den GitHub-Token (einmalig im PIN-Fenster).", 7000);
+          return;
+        }
+
+        uploadKind = kind;
+        uploadToken = token;
+
+        const input = $("fileInput");
+        input.accept = kind === "photo" ? "image/*" : "video/*";
+        input.value = "";
+        input.click();
+      });
+    }
+
+    $("fileInput").addEventListener("change", (e) => {
+      const files = Array.from(e.target.files || []);
+      if (files.length) uploadFiles(files, uploadKind, uploadToken);
+    });
+
+    $("photoUpload").addEventListener("click", () => startUpload("photo"));
+    $("videoUpload").addEventListener("click", () => startUpload("video"));
+
     renderList();
     loadData();
+    loadMedia();
   </script>
 
 </body>
