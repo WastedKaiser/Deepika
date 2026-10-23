@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1792768901874,
+  "updatedAt": 1792768976930,
   "memories": [
     {
       "id": "relationship",
@@ -32,14 +32,6 @@
       "desc": "Unser erstes Treffen bei mir zu Hause",
       "text": "",
       "footer": "Diese Erinnerung gehört für immer uns. ❤️"
-    },
-    {
-      "id": "m1792768891519",
-      "emoji": "🤗",
-      "date": "2026-10-22",
-      "desc": "Test Versuch eins",
-      "text": "Wenn es nicht klappt jage ich alle an Halloween ",
-      "footer": "Test 7262"
     }
   ]
 }
