@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1792770411665,
+  "updatedAt": 1792770495534,
   "memories": [
     {
       "id": "relationship",
@@ -48,6 +48,14 @@
       "desc": "Deepika Mausi wurde geboren",
       "text": "Hi Prabh ",
       "footer": "Diese Erinnerung gehört mir, nicht dir :P"
+    },
+    {
+      "id": "m1792770493168",
+      "emoji": "👑",
+      "date": "2009-01-05",
+      "desc": "Der wahre Löwe Prabh wurde geboren.",
+      "text": "Hi Deepika \nDu bist toll.\nDu bist die beste Freundin :P",
+      "footer": "Diese Erinnerung gehört für immer uns. ❤️"
     }
   ]
 }
