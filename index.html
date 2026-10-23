@@ -688,6 +688,71 @@
       background: rgba(255, 255, 255, 0.22);
       padding: 10px 20px;
     }
+    /* ===== Notizblock ===== */
+
+    .modal.top {
+      align-items: flex-start;
+      padding-top: calc(env(safe-area-inset-top) + 16px);
+    }
+
+    .note-box {
+      background: white;
+      border-radius: 22px;
+      width: 100%;
+      max-width: 420px;
+      padding: 14px 14px 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .note-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .note-header h2 {
+      margin: 0;
+      font-size: 19px;
+      color: var(--primary);
+    }
+
+    .note-icon-btn {
+      width: 46px;
+      min-height: 46px;
+      height: 46px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    #noteDiscard {
+      background: var(--btn-soft);
+      color: var(--primary-dark);
+    }
+
+    #noteText {
+      display: block;
+      height: min(40dvh, 340px);
+      min-height: 160px;
+      resize: none;
+      line-height: 1.55;
+      background: var(--soft);
+      border-color: var(--soft-border);
+      overflow-y: auto;
+    }
+
+    #noteText:focus { border-color: var(--primary); }
+
+    .note-hint {
+      margin: 10px 2px 0;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #999;
+      text-align: left;
+    }
   </style>
 </head>
 
@@ -799,6 +864,7 @@
     </div>
 
     <div id="fabs">
+      <button id="noteButton" class="fab small" type="button" aria-label="Notizen">📝</button>
       <button id="videoButton" class="fab small" type="button" aria-label="Videos">🎬</button>
       <button id="photoButton" class="fab small" type="button" aria-label="Fotos">🖼️</button>
       <button id="addButton" class="fab" type="button" aria-label="Neue Erinnerung hinzufügen">+</button>
@@ -897,6 +963,22 @@
     <div id="viewerControls">
       <button id="skipBack" type="button">⏪ 10 s</button>
       <button id="skipFwd" type="button">10 s ⏩</button>
+    </div>
+  </div>
+
+  <!-- Notizblock -->
+
+  <div id="noteModal" class="modal top" role="dialog" aria-modal="true" aria-labelledby="noteTitle">
+    <div class="note-box">
+      <div class="note-header">
+        <button id="noteDiscard" class="note-icon-btn" type="button" aria-label="Verwerfen">✕</button>
+        <h2 id="noteTitle">📝 Notizen</h2>
+        <button id="noteSave" class="note-icon-btn" type="button" aria-label="Speichern">✓</button>
+      </div>
+
+      <textarea id="noteText" placeholder="Schreib hier deine Notizen …" spellcheck="true"></textarea>
+
+      <p class="note-hint">✓ speichert und schließt · ✕ verwirft die Änderungen. Gespeichert wird nur auf diesem Gerät.</p>
     </div>
   </div>
 
@@ -1851,6 +1933,47 @@
 
     $("photoUpload").addEventListener("click", () => startUpload("photo"));
     $("videoUpload").addEventListener("click", () => startUpload("video"));
+
+    // ===== Notizblock (genau eine Notiz, gespeichert in localStorage) =====
+
+    const NOTE_KEY = "deepika-note";
+    let noteFallback = "";   // falls der Browser localStorage blockiert (nur bis zum Neuladen)
+
+    function getSavedNote() {
+      const value = storageGet(NOTE_KEY);
+      return value !== null ? value : noteFallback;
+    }
+
+    function openNote() {
+      const field = $("noteText");
+      field.value = getSavedNote();
+      $("noteModal").classList.add("open");
+
+      if (!field.value) setTimeout(() => field.focus(), 60);
+    }
+
+    function closeNote() {
+      $("noteText").blur();
+      $("noteModal").classList.remove("open");
+    }
+
+    $("noteButton").addEventListener("click", openNote);
+
+    $("noteSave").addEventListener("click", () => {
+      const value = $("noteText").value;
+
+      noteFallback = value;
+      storageSet(NOTE_KEY, value);
+      closeNote();
+
+      if (storageGet(NOTE_KEY) === value) {
+        toast("Notiz gespeichert ✓", 2500);
+      } else {
+        toast("Der Browser erlaubt kein dauerhaftes Speichern. Die Notiz bleibt nur bis zum Neuladen.", 6000);
+      }
+    });
+
+    $("noteDiscard").addEventListener("click", closeNote);
 
     renderList();
     loadData();
