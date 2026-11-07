@@ -1718,9 +1718,10 @@
         $("photoUpload").addEventListener("click", () => { uploadKind = "photo"; $("fileInput").click(); });
         $("videoUpload").addEventListener("click", () => { uploadKind = "video"; $("fileInput").click(); });
 
-        // Init Data
-        loadData();
-        loadMedia();
+       // Init Data
+    show("website");
+    loadData();
+    loadMedia();
 
         // Animation ausführen
         if (typeof startHeartRain === "function") {
