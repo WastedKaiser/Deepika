@@ -9,7 +9,6 @@
 
   <style>
     /* ===== Farbthemen ===== */
-
     :root,
     [data-theme="blau"] {
       --bg: #eef5ff; --primary: #1c7ed6; --primary-dark: #1864ab;
@@ -43,7 +42,6 @@
     }
 
     /* ===== Grundlayout (nur Handy) ===== */
-
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
@@ -147,7 +145,6 @@
     input:focus, textarea:focus { border-color: var(--primary); }
 
     /* ===== Farbwahl & Live-Timer rechts oben ===== */
-
     #themePicker {
       position: fixed;
       top: calc(env(safe-area-inset-top) + 10px);
@@ -201,7 +198,6 @@
     .swatch[data-theme="gruen"] { background: #2f9e44; }
     .swatch[data-theme="lila"] { background: #7048e8; }
 
-    /* Live-Timer Box unter der Farbauswahl */
     #liveTimer {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(6px);
@@ -233,7 +229,6 @@
     }
 
     /* ===== Herz-Regen Animation ===== */
-
     .heart-rain {
       position: fixed;
       top: -10vh;
@@ -244,21 +239,12 @@
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg) scale(0.8);
-        opacity: 1;
-      }
-      85% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(115vh) rotate(360deg) scale(1.2);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateY(115vh) rotate(360deg) scale(1.2); opacity: 0; }
     }
 
-    /* ===== 100 Gründe Box ===== */
-
+    /* ===== Boxen Design (100 Gründe & Klicker) ===== */
     .reasons-section {
       margin-top: 28px;
       padding: 18px 14px;
@@ -273,7 +259,7 @@
       margin: 0 0 10px;
     }
 
-    #reasonBox {
+    .content-box {
       background: white;
       border-radius: 14px;
       padding: 14px 12px;
@@ -300,8 +286,16 @@
       margin: 0;
       line-height: 1.45;
     }
+    
+    #clickCountDisplay {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
 
-    #reasonButton {
+    .action-btn {
       width: 100%;
       font-weight: bold;
       font-size: 16px;
@@ -310,12 +304,9 @@
       transition: transform 0.1s;
     }
 
-    #reasonButton:active {
-      transform: scale(0.96);
-    }
+    .action-btn:active { transform: scale(0.96); }
 
     /* ===== Passwortseite ===== */
-
     #login {
       max-width: 400px;
       margin: 10px auto 0;
@@ -326,24 +317,11 @@
     }
 
     #login h1 { font-size: 24px; }
-
-    #password {
-      margin: 6px 0 16px;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    #error {
-      color: var(--primary);
-      font-size: 14px;
-      min-height: 20px;
-      margin: 14px 0 0;
-    }
+    #password { margin: 6px 0 16px; font-size: 20px; text-align: center; }
+    #error { color: var(--primary); font-size: 14px; min-height: 20px; margin: 14px 0 0; }
 
     /* ===== Timeline ===== */
-
     .timeline-title { margin-top: 30px; }
-
     .timeline-intro { color: #777; font-size: 15px; }
 
     .memory-list {
@@ -368,31 +346,13 @@
     .memory-card:active { background: var(--soft-hover); }
 
     .memory-icon { font-size: 34px; flex-shrink: 0; line-height: 1; }
-
     .memory-info { flex: 1; min-width: 0; }
-
-    .memory-date {
-      display: block;
-      color: var(--primary);
-      font-size: 17px;
-      font-weight: bold;
-      margin-bottom: 3px;
-    }
-
-    .memory-description {
-      display: block;
-      font-size: 14px;
-      color: #666;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
-    }
-
+    .memory-date { display: block; color: var(--primary); font-size: 17px; font-weight: bold; margin-bottom: 3px; }
+    .memory-description { display: block; font-size: 14px; color: #666; line-height: 1.4; overflow-wrap: anywhere; }
     .arrow { color: var(--primary); font-size: 24px; }
-
     .heart { color: var(--primary); font-size: 20px; margin-top: 18px; overflow-wrap: anywhere; }
 
-    /* Knöpfe unten rechts: Video, Foto, Plus */
-
+    /* Knöpfe unten rechts */
     #fabs {
       position: fixed;
       right: 18px;
@@ -413,23 +373,15 @@
       line-height: 1;
       box-shadow: 0 4px 14px rgba(var(--shadow), 0.45);
     }
-
-    .fab.small {
-      width: 52px;
-      height: 52px;
-      min-height: 52px;
-      font-size: 24px;
-    }
+    .fab.small { width: 52px; height: 52px; min-height: 52px; font-size: 24px; }
 
     /* ===== Erinnerungsseite ===== */
-
     .back-button {
       background: var(--btn-soft);
       color: var(--primary-dark);
       margin-bottom: 16px;
       font-size: 16px;
     }
-
     .big-emoji { font-size: 56px; line-height: 1.2; margin-bottom: 6px; }
 
     .memory-content {
@@ -440,80 +392,22 @@
       margin: 14px 0 0;
       text-align: left;
     }
-
-    .memory-content p {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      font-size: 17px;
-      margin: 0;
-    }
-
+    .memory-content p { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 17px; margin: 0; }
     .memory-content p.empty { color: #999; font-style: italic; }
-
     .edit-button { margin-top: 20px; width: 100%; }
 
     /* ===== Editor ===== */
-
-    .field-label {
-      text-align: left;
-      font-weight: 600;
-      color: var(--primary);
-      margin: 20px 0 8px;
-      font-size: 15px;
-    }
-
-    #emojiGrid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .emoji-option {
-      min-height: 48px;
-      padding: 0;
-      font-size: 26px;
-      background: var(--soft);
-      border: 2px solid var(--soft-border);
-      border-radius: 12px;
-    }
-
-    .emoji-option.selected {
-      border-color: var(--primary);
-      background: var(--soft-hover);
-    }
-
-    input[type="date"] {
-      min-height: 50px;
-      text-align: center;
-    }
-
-    textarea {
-      min-height: 190px;
-      resize: vertical;
-      line-height: 1.5;
-    }
-
+    .field-label { text-align: left; font-weight: 600; color: var(--primary); margin: 20px 0 8px; font-size: 15px; }
+    #emojiGrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 10px; }
+    .emoji-option { min-height: 48px; padding: 0; font-size: 26px; background: var(--soft); border: 2px solid var(--soft-border); border-radius: 12px; }
+    .emoji-option.selected { border-color: var(--primary); background: var(--soft-hover); }
+    input[type="date"] { min-height: 50px; text-align: center; }
+    textarea { min-height: 190px; resize: vertical; line-height: 1.5; }
     .save-button { width: 100%; margin-top: 24px; }
+    .encrypt-button { width: 100%; margin-top: 12px; background: var(--btn-soft); color: var(--primary-dark); font-size: 15px; }
+    .danger { width: 100%; margin-top: 12px; background: #fff; color: #c92a2a; border: 2px solid #ffc9c9; }
 
-    .encrypt-button {
-      width: 100%;
-      margin-top: 12px;
-      background: var(--btn-soft);
-      color: var(--primary-dark);
-      font-size: 15px;
-    }
-
-    .danger {
-      width: 100%;
-      margin-top: 12px;
-      background: #fff;
-      color: #c92a2a;
-      border: 2px solid #ffc9c9;
-    }
-
-    /* ===== PIN-Fenster & Hinweis ===== */
-
+    /* ===== Modal & Toast ===== */
     .modal {
       display: none;
       position: fixed;
@@ -524,9 +418,7 @@
       justify-content: center;
       padding: 20px;
     }
-
     .modal.open { display: flex; }
-
     .modal-box {
       background: white;
       border-radius: 20px;
@@ -537,19 +429,13 @@
       overflow-y: auto;
       text-align: center;
     }
-
     .modal-box h2 { margin: 0 0 12px; color: var(--primary); font-size: 20px; }
-
     .modal-box .hint { font-size: 13px; color: #777; line-height: 1.5; margin: 8px 0 12px; text-align: left; }
-
     #pinInput { text-align: center; font-size: 22px; letter-spacing: 6px; }
-
     #pinError { color: #c92a2a; font-size: 14px; min-height: 18px; margin: 8px 0 0; }
-
     .modal-buttons { display: flex; gap: 10px; margin-top: 14px; }
     .modal-buttons button { flex: 1; padding: 12px 8px; }
     .modal-buttons .secondary { background: var(--btn-soft); color: var(--primary-dark); }
-
     #tokenBlock { display: none; text-align: left; margin-top: 14px; }
     #tokenBlock.show { display: block; }
 
@@ -570,210 +456,42 @@
       line-height: 1.4;
     }
 
-    /* ===== Galerie ===== */
-
+    /* ===== Galerie & Viewer ===== */
     .gallery { column-gap: 6px; margin-top: 6px; }
     .gallery.photos { column-count: 3; }
     .gallery.videos { column-count: 2; }
-
-    .tile {
-      position: relative;
-      display: block;
-      break-inside: avoid;
-      margin-bottom: 6px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--soft);
-      cursor: pointer;
-    }
-
-    .tile img, .tile video {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .tile .play {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 38px;
-      color: white;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-      pointer-events: none;
-    }
-
+    .tile { position: relative; display: block; break-inside: avoid; margin-bottom: 6px; border-radius: 10px; overflow: hidden; background: var(--soft); cursor: pointer; }
+    .tile img, .tile video { display: block; width: 100%; height: auto; margin: 0; border-radius: 0; box-shadow: none; }
+    .tile .play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 38px; color: white; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); pointer-events: none; }
     .empty-note { color: #888; font-size: 15px; margin: 24px 0 8px; }
+    .hidden-input { position: fixed; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
-    .hidden-input {
-      position: fixed;
-      left: -9999px;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-    }
-
-    /* Großansicht */
-
-    #viewer {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 400;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
+    #viewer { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 400; flex-direction: column; align-items: center; justify-content: center; }
     #viewer.open { display: flex; }
-
-    #viewerBody {
-      flex: 1;
-      width: 100%;
-      min-height: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: calc(env(safe-area-inset-top) + 62px) 6px 6px;
-    }
-
-    #viewerBody img, #viewerBody video {
-      max-width: 100%;
-      max-height: 100%;
-      margin: 0;
-      border-radius: 0;
-      box-shadow: none;
-      object-fit: contain;
-    }
-
-    #viewerClose {
-      position: absolute;
-      top: calc(env(safe-area-inset-top) + 10px);
-      right: 12px;
-      width: 46px;
-      height: 46px;
-      min-height: 46px;
-      padding: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.22);
-      font-size: 22px;
-      z-index: 2;
-    }
-
-    .viewer-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 42px;
-      height: 64px;
-      min-height: 64px;
-      padding: 0;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.18);
-      font-size: 32px;
-      z-index: 2;
-    }
-
+    #viewerBody { flex: 1; width: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; padding: calc(env(safe-area-inset-top) + 62px) 6px 6px; }
+    #viewerBody img, #viewerBody video { max-width: 100%; max-height: 100%; margin: 0; border-radius: 0; box-shadow: none; object-fit: contain; }
+    #viewerClose { position: absolute; top: calc(env(safe-area-inset-top) + 10px); right: 12px; width: 46px; height: 46px; min-height: 46px; padding: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.22); font-size: 22px; z-index: 2; }
+    .viewer-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 64px; min-height: 64px; padding: 0; border-radius: 12px; background: rgba(255, 255, 255, 0.18); font-size: 32px; z-index: 2; }
     #viewerPrev { left: 4px; }
     #viewerNext { right: 4px; }
     .viewer-nav[disabled] { opacity: 0.25; }
-
-    #viewerControls {
-      display: none;
-      gap: 12px;
-      padding: 10px 12px calc(env(safe-area-inset-bottom) + 14px);
-    }
-
+    #viewerControls { display: none; gap: 12px; padding: 10px 12px calc(env(safe-area-inset-bottom) + 14px); }
     #viewerControls.show { display: flex; }
+    #viewerControls button { background: rgba(255, 255, 255, 0.22); padding: 10px 20px; }
 
-    #viewerControls button {
-      background: rgba(255, 255, 255, 0.22);
-      padding: 10px 20px;
-    }
-
-    /* ===== Notizblock ===== */
-
-    .modal.top {
-      align-items: flex-start;
-      padding-top: calc(env(safe-area-inset-top) + 16px);
-    }
-
-    .note-box {
-      background: white;
-      border-radius: 22px;
-      width: 100%;
-      max-width: 420px;
-      padding: 14px 14px 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    }
-
-    .note-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .note-header h2 {
-      margin: 0;
-      font-size: 19px;
-      color: var(--primary);
-    }
-
-    .note-icon-btn {
-      width: 46px;
-      min-height: 46px;
-      height: 46px;
-      padding: 0;
-      border-radius: 50%;
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    #noteDiscard {
-      background: var(--btn-soft);
-      color: var(--primary-dark);
-    }
-
-    #noteText {
-      display: block;
-      height: min(40dvh, 340px);
-      min-height: 160px;
-      resize: none;
-      line-height: 1.55;
-      background: var(--soft);
-      border-color: var(--soft-border);
-      overflow-y: auto;
-    }
-
+    /* ===== Notizblock Modal ===== */
+    .modal.top { align-items: flex-start; padding-top: calc(env(safe-area-inset-top) + 16px); }
+    .note-box { background: white; border-radius: 22px; width: 100%; max-width: 420px; padding: 14px 14px 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+    .note-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .note-header h2 { margin: 0; font-size: 19px; color: var(--primary); }
+    .note-icon-btn { width: 46px; min-height: 46px; height: 46px; padding: 0; border-radius: 50%; font-size: 22px; line-height: 1; }
+    #noteDiscard { background: var(--btn-soft); color: var(--primary-dark); }
+    #noteText { display: block; height: min(40dvh, 340px); min-height: 160px; resize: none; line-height: 1.55; background: var(--soft); border-color: var(--soft-border); overflow-y: auto; }
     #noteText:focus { border-color: var(--primary); }
-
-    #noteText[readonly] { background: #fafafa; }
-
-    #noteUnlock {
-      width: 100%;
-      margin-top: 12px;
-      background: var(--btn-soft);
-      color: var(--primary-dark);
-    }
-
-    .note-hint {
-      margin: 10px 2px 0;
-      font-size: 12px;
-      line-height: 1.4;
-      color: #999;
-      text-align: left;
-    }
+    #noteUnlock { width: 100%; margin-top: 12px; background: var(--btn-soft); color: var(--primary-dark); }
+    .note-hint { margin: 10px 2px 0; font-size: 12px; line-height: 1.4; color: #999; text-align: left; }
   </style>
 </head>
-
 <body>
 
   <!-- Passwortabfrage -->
@@ -788,9 +506,9 @@
     <p id="error" aria-live="polite"></p>
   </div>
 
-  <!-- Geschützter Inhalt (erst nach Passworteingabe im DOM verfügbar) -->
+  <!-- Geschützter Inhalt (erst nach Passworteingabe im DOM) -->
   <template id="protectedTemplate">
-    <!-- Farbwahl + Live-Timer rechts oben -->
+    <!-- Farbwahl + Live-Timer -->
     <div id="themePicker">
       <button id="themeToggle" type="button" aria-label="Farben ändern">🎨</button>
       <div id="themePanel" role="group" aria-label="Farbe wählen">
@@ -829,14 +547,24 @@
         </p>
         <img class="photo" src="deepikaprabh.jpg" alt="Foto von uns">
 
+        <!-- Klicker: So oft habe ich an dich gedacht -->
+        <div class="reasons-section">
+          <h2>Ich denke an dich... 💭❤️</h2>
+          <div class="content-box">
+            <div id="clickCountDisplay">0</div>
+            <p style="margin: 0; font-size: 14px; color: #666; font-weight: bold;">Mal</p>
+          </div>
+          <button id="clickerButton" class="action-btn" type="button">Klick mich! ❤️</button>
+        </div>
+
         <!-- 100 Gründe warum ich dich liebe -->
         <div class="reasons-section">
           <h2>100 Gründe, wieso ich dich liebe Deepika ❤️</h2>
-          <div id="reasonBox">
+          <div class="content-box">
             <span id="reasonNumber">Grund #1 von 100</span>
             <p id="reasonText">Drück unten auf den Knopf, mein Schatz! 😘</p>
           </div>
-          <button id="reasonButton" type="button">drück mich als wäre es mein arsch</button>
+          <button id="reasonButton" class="action-btn" type="button">drück mich als wäre es mein arsch</button>
         </div>
 
         <h1 class="timeline-title">Unsere Geschichte ❤️</h1>
@@ -885,7 +613,7 @@
         <input id="footerInput" type="text" maxlength="80" autocomplete="off">
         <button id="saveButton" class="save-button" type="button">💾 Speichern</button>
         <button id="deleteButton" class="danger" type="button">🗑️ Erinnerung löschen</button>
-        <button id="encryptRepoButton" class="encrypt-button" type="button">🔒 Quellcode auf GitHub verschlüsseln (AES-256)</button>
+        <button id="encryptRepoButton" class="encrypt-button" type="button">🔒 Quellcode auf GitHub verschlüsseln</button>
       </div>
     </div>
 
@@ -925,8 +653,8 @@
       </div>
     </div>
 
-    <!-- Notizblock -->
-    <div id="noteModal" class="modal top" role="dialog" aria-modal="true" aria-labelledby="noteTitle">
+    <!-- Notizblock Modal -->
+    <div id="noteModal" class="modal top" role="dialog" aria-modal="true">
       <div class="note-box">
         <div class="note-header">
           <button id="noteDiscard" class="note-icon-btn" type="button" aria-label="Verwerfen">✕</button>
@@ -939,7 +667,7 @@
       </div>
     </div>
 
-    <!-- PIN-Fenster -->
+    <!-- PIN-Fenster Modal -->
     <div id="pinModal" class="modal">
       <div class="modal-box">
         <h2>🔐 PIN eingeben</h2>
@@ -959,134 +687,129 @@
         </div>
       </div>
     </div>
-
+    
     <div id="toast" role="status"></div>
-
-    <script id="appData" type="application/json">
-      {
-        "startDate": [2026, 8, 6, 16, 32, 0],
-        "defaultFooter": "Diese Erinnerung gehört für immer uns. ❤️",
-        "reasons": [
-          "Weil du die wunderschönsten braunen Augen der Welt hast. 👀❤️",
-          "Weil dein Lächeln selbst meinen schlechtesten Tag sofort rettet.",
-          "Weil ich bei dir zu 100 % ich selbst sein kann.",
-          "Weil sich jede Sekunde mit dir wie ein kleines Abenteuer anfühlt.",
-          "Weil du mich zum Lachen bringst wie kein anderer Mensch.",
-          "Weil du so unglaublich süß bist, wenn du verlegen wirst. 🥹",
-          "Weil deine Umarmungen sich wie Nachhausekommen anfühlen.",
-          "Weil ich mit dir den größten Blödsinn machen kann.",
-          "Weil du mir immer zuhörst, egal worum es geht.",
-          "Weil deine Stimme meine absolute Lieblingsmelodie ist.",
-          "Weil du mein Ruhepol bist, wenn alles um mich herum stressig wird.",
-          "Weil ich mich jeden Tag aufs Neue in dich verliebe.",
-          "Weil du so ein riesengroßes, warmes Herz hast.",
-          "Weil selbst Schweigen mit dir niemals unangenehm ist.",
-          "Weil du mich verstehst, oft sogar ganz ohne Worte.",
-          "Weil du mich zu einem besseren Menschen machst.",
-          "Weil jede Nachricht von dir mein Herz schneller schlagen lässt. 📱💕",
-          "Weil du so wunderbar verrückt bist – genau wie ich.",
-          "Weil deine Küsse einfach süchtig machen. 💋",
-          "Weil ich deine Art liebe, wie du mich anschaust.",
-          "Weil mit dir selbst der langweiligste Alltag besonders wird.",
-          "Weil du meine beste Freundin und meine große Liebe zugleich bist.",
-          "Weil du so gut riechst, dass ich am liebsten nie wieder loslassen würde.",
-          "Weil ich es liebe, deine Hand zu halten.",
-          "Weil du meine kleinen Macken nicht nur akzeptierst, sondern liebst.",
-          "Weil der 06.09.2026 um 16:32 Uhr mein Leben für immer schöner gemacht hat.",
-          "Weil du so wunderschön aussiehst, selbst wenn du gerade erst aufgewacht bist.",
-          "Weil du genau weißt, wie du mich aufmuntern kannst.",
-          "Weil ich mir meine Zukunft nur noch mit dir vorstellen kann.",
-          "Weil du mein erster Gedanke am Morgen bist.",
-          "Weil du mein letzter Gedanke vor dem Einschlafen bist.",
-          "Weil du so süß schaust, wenn du dich über eine Kleinigkeit freust.",
-          "Weil es mir wehtut, wenn wir uns verabschieden müssen.",
-          "Weil du so ehrlich und aufrichtig zu mir bist.",
-          "Weil du mir das Gefühl gibst, der wichtigste Mensch der Welt zu sein.",
-          "Weil wir zusammen über die dümmsten Witze lachen können.",
-          "Weil du einfach unfassbar heiß bist. 🔥",
-          "Weil ich jede einzelne Erinnerung mit dir im Herzen trage.",
-          "Weil du meine Welt so viel bunter machst.",
-          "Weil ich es liebe, wenn du deinen Kopf an meine Schulter lehnst.",
-          "Weil du mich manchmal mit nur einem Blick komplett aus dem Konzept bringst.",
-          "Weil du so fürsorglich bist.",
-          "Weil ich mit dir über Gott und die Welt reden kann.",
-          "Weil du meinen Humor teilst.",
-          "Weil du mich immer wieder überraschst.",
-          "Weil du mir Geborgenheit schenkst.",
-          "Weil deine Nähe das Schönste auf der Welt ist.",
-          "Weil ich dich schon vermisse, sobald du zur Tür rausgehst.",
-          "Weil du mich so nimmst, wie ich bin.",
-          "Weil kein Liebeslied der Welt beschreiben kann, was ich für dich fühle.",
-          "Weil ich es liebe, dich glücklich zu sehen.",
-          "Weil dein Lachen einfach ansteckend ist.",
-          "Weil du so wundervoll zärtlich bist.",
-          "Weil du mein absoluter Lieblingsmensch bist.",
-          "Weil jede Berührung von dir bei mir Gänsehaut auslöst.",
-          "Weil wir zusammen ein unschlagbares Team sind.",
-          "Weil du immer an mich glaubst.",
-          "Weil ich bei dir einfach alles um mich herum vergesse.",
-          "Weil du mein Herz zum Rasen bringst, wie am allerersten Tag.",
-          "Weil du so süß bist, wenn du müde wirst.",
-          "Weil ich es liebe, mit dir zu kuscheln.",
-          "Weil du immer für mich da bist, wenn ich dich brauche.",
-          "Weil du jeden Ort zu einem schönen Ort machst, sobald du da bist.",
-          "Weil du so einzigartig bist.",
-          "Weil ich stolz darauf bin, dein Freund zu sein.",
-          "Weil du meine Träume und Ziele unterstützt.",
-          "Weil du manchmal genauso ein kleiner Dickkopf bist wie ich. 😜",
-          "Weil du mein größtes Glück bist.",
-          "Weil ich dir blind vertrauen kann.",
-          "Weil du weißt, was ich denke, bevor ich es überhaupt ausspreche.",
-          "Weil jede Stunde mit dir wie im Flug vergeht.",
-          "Weil du so eine schöne Ausstrahlung hast.",
-          "Weil du mein Leben komplett auf den Kopf gestellt hast – im besten Sinne.",
-          "Weil ich es liebe, wie du meinen Namen sagst.",
-          "Weil du mir Kraft gibst.",
-          "Weil du selbst an grauen Regentagen mein Sonnenschein bist.",
-          "Weil ich mich auf jedes einzelne Treffen mit dir freue wie ein kleines Kind.",
-          "Weil du mir zeigst, was echte Liebe bedeutet.",
-          "Weil du mein Zuhause bist – egal wo wir gerade sind.",
-          "Weil ich deine Lippen liebe.",
-          "Weil du mich manchmal einfach sprachlos machst.",
-          "Weil du so aufmerksam bist und dir kleine Details merkst.",
-          "Weil ich mit dir alt werden möchte.",
-          "Weil du meine bessere Hälfte bist.",
-          "Weil kein Tag vergeht, an dem ich nicht dankbar für dich bin.",
-          "Weil du so süß bist, wenn du versuchst, ernst zu bleiben und trotzdem lächeln musst.",
-          "Weil wir uns auf Snapchat gefunden haben und daraus das Beste meines Lebens wurde. 👻❤️",
-          "Weil unser erstes Treffen am 21. Juli unvergesslich bleibt.",
-          "Weil du mein Herz gestohlen hast – und es gerne für immer behalten darfst.",
-          "Weil du mich mit deiner Art jeden Tag verzauberst.",
-          "Weil ich es liebe, dich einfach nur anzusehen.",
-          "Weil du meine Nummer 1 bist – heute, morgen und für immer.",
-          "Weil du selbst meine schlechte Laune in Sekunden wegzauberst.",
-          "Weil sich mit dir alles richtig anfühlt.",
-          "Weil du meine kleine perverse Sau bist. :P ❤️",
-          "Weil ich noch tausend weitere Abenteuer mit dir erleben will.",
-          "Weil du einfach perfekt für mich bist.",
-          "Weil meine Liebe zu dir jeden einzelnen Tag noch größer wird.",
-          "Weil du Deepika bist – und ich dich mehr liebe, als Worte jemals sagen könnten! ❤️"
-        ],
-        "seed": [
-          { "id": "relationship", "emoji": "❤️", "date": "2026-09-06", "desc": "Wir sind zusammengekommen", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" },
-          { "id": "snapchat", "emoji": "👻", "date": "2026-07-10", "desc": "Wir haben uns auf Snapchat geaddet", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" },
-          { "id": "firstDate", "emoji": "🥹", "date": "2026-07-21", "desc": "Unser allererstes Treffen", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" },
-          { "id": "homeDate", "emoji": "🏡", "date": "2026-10-26", "desc": "Unser erstes Treffen bei mir zu Hause", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" }
-        ]
-      }
-    </script>
   </template>
 
   <!-- Platzhalter für AES-256 verschlüsselten HTML-Inhalt -->
   <script id="encryptedPayload" type="text/plain"></script>
 
   <script>
+    // ===== START DER ANWENDUNG =====
     (function () {
       "use strict";
 
-      // ===== Kryptografie & Hash-Prüfung =====
       const PW_HASH = 365431000;
       const PIN_HASH = 5861746;
+      
+      const LOVE_REASONS = [
+        "Weil du die wunderschönsten braunen Augen der Welt hast. 👀❤️",
+        "Weil dein Lächeln selbst meinen schlechtesten Tag sofort rettet.",
+        "Weil ich bei dir zu 100 % ich selbst sein kann.",
+        "Weil sich jede Sekunde mit dir wie ein kleines Abenteuer anfühlt.",
+        "Weil du mich zum Lachen bringst wie kein anderer Mensch.",
+        "Weil du so unglaublich süß bist, wenn du verlegen wirst. 🥹",
+        "Weil deine Umarmungen sich wie Nachhausekommen anfühlen.",
+        "Weil ich mit dir den größten Blödsinn machen kann.",
+        "Weil du mir immer zuhörst, egal worum es geht.",
+        "Weil deine Stimme meine absolute Lieblingsmelodie ist.",
+        "Weil du mein Ruhepol bist, wenn alles um mich herum stressig wird.",
+        "Weil ich mich jeden Tag aufs Neue in dich verliebe.",
+        "Weil du so ein riesengroßes, warmes Herz hast.",
+        "Weil selbst Schweigen mit dir niemals unangenehm ist.",
+        "Weil du mich verstehst, oft sogar ganz ohne Worte.",
+        "Weil du mich zu einem besseren Menschen machst.",
+        "Weil jede Nachricht von dir mein Herz schneller schlagen lässt. 📱💕",
+        "Weil du so wunderbar verrückt bist – genau wie ich.",
+        "Weil deine Küsse einfach süchtig machen. 💋",
+        "Weil ich deine Art liebe, wie du mich anschaust.",
+        "Weil mit dir selbst der langweiligste Alltag besonders wird.",
+        "Weil du meine beste Freundin und meine große Liebe zugleich bist.",
+        "Weil du so gut riechst, dass ich am liebsten nie wieder loslassen würde.",
+        "Weil ich es liebe, deine Hand zu halten.",
+        "Weil du meine kleinen Macken nicht nur akzeptierst, sondern liebst.",
+        "Weil der 06.09.2026 um 16:32 Uhr mein Leben für immer schöner gemacht hat.",
+        "Weil du so wunderschön aussiehst, selbst wenn du gerade erst aufgewacht bist.",
+        "Weil du genau weißt, wie du mich aufmuntern kannst.",
+        "Weil ich mir meine Zukunft nur noch mit dir vorstellen kann.",
+        "Weil du mein erster Gedanke am Morgen bist.",
+        "Weil du mein letzter Gedanke vor dem Einschlafen bist.",
+        "Weil du so süß schaust, wenn du dich über eine Kleinigkeit freust.",
+        "Weil es mir wehtut, wenn wir uns verabschieden müssen.",
+        "Weil du so ehrlich und aufrichtig zu mir bist.",
+        "Weil du mir das Gefühl gibst, der wichtigste Mensch der Welt zu sein.",
+        "Weil wir zusammen über die dümmsten Witze lachen können.",
+        "Weil du einfach unfassbar heiß bist. 🔥",
+        "Weil ich jede einzelne Erinnerung mit dir im Herzen trage.",
+        "Weil du meine Welt so viel bunter machst.",
+        "Weil ich es liebe, wenn du deinen Kopf an meine Schulter lehnst.",
+        "Weil du mich manchmal mit nur einem Blick komplett aus dem Konzept bringst.",
+        "Weil du so fürsorglich bist.",
+        "Weil ich mit dir über Gott und die Welt reden kann.",
+        "Weil du meinen Humor teilst.",
+        "Weil du mich immer wieder überraschst.",
+        "Weil du mir Geborgenheit schenkst.",
+        "Weil deine Nähe das Schönste auf der Welt ist.",
+        "Weil ich dich schon vermisse, sobald du zur Tür rausgehst.",
+        "Weil du mich so nimmst, wie ich bin.",
+        "Weil kein Liebeslied der Welt beschreiben kann, was ich für dich fühle.",
+        "Weil ich es liebe, dich glücklich zu sehen.",
+        "Weil dein Lachen einfach ansteckend ist.",
+        "Weil du so wundervoll zärtlich bist.",
+        "Weil du mein absoluter Lieblingsmensch bist.",
+        "Weil jede Berührung von dir bei mir Gänsehaut auslöst.",
+        "Weil wir zusammen ein unschlagbares Team sind.",
+        "Weil du immer an mich glaubst.",
+        "Weil ich bei dir einfach alles um mich herum vergesse.",
+        "Weil du mein Herz zum Rasen bringst, wie am allerersten Tag.",
+        "Weil du so süß bist, wenn du müde wirst.",
+        "Weil ich es liebe, mit dir zu kuscheln.",
+        "Weil du immer für mich da bist, wenn ich dich brauche.",
+        "Weil du jeden Ort zu einem schönen Ort machst, sobald du da bist.",
+        "Weil du so einzigartig bist.",
+        "Weil ich stolz darauf bin, dein Freund zu sein.",
+        "Weil du meine Träume und Ziele unterstützt.",
+        "Weil du manchmal genauso ein kleiner Dickkopf bist wie ich. 😜",
+        "Weil du mein größtes Glück bist.",
+        "Weil ich dir blind vertrauen kann.",
+        "Weil du weißt, was ich denke, bevor ich es überhaupt ausspreche.",
+        "Weil jede Stunde mit dir wie im Flug vergeht.",
+        "Weil du so eine schöne Ausstrahlung hast.",
+        "Weil du mein Leben komplett auf den Kopf gestellt hast – im besten Sinne.",
+        "Weil ich es liebe, wie du meinen Namen sagst.",
+        "Weil du mir Kraft gibst.",
+        "Weil du selbst an grauen Regentagen mein Sonnenschein bist.",
+        "Weil ich mich auf jedes einzelne Treffen mit dir freue wie ein kleines Kind.",
+        "Weil du mir zeigst, was echte Liebe bedeutet.",
+        "Weil du mein Zuhause bist – egal wo wir gerade sind.",
+        "Weil ich deine Lippen liebe.",
+        "Weil du mich manchmal einfach sprachlos machst.",
+        "Weil du so aufmerksam bist und dir kleine Details merkst.",
+        "Weil ich mit dir alt werden möchte.",
+        "Weil du meine bessere Hälfte bist.",
+        "Weil kein Tag vergeht, an dem ich nicht dankbar für dich bin.",
+        "Weil du so süß bist, wenn du versuchst, ernst zu bleiben und trotzdem lächeln musst.",
+        "Weil wir uns auf Snapchat gefunden haben und daraus das Beste meines Lebens wurde. 👻❤️",
+        "Weil unser erstes Treffen am 21. Juli unvergesslich bleibt.",
+        "Weil du mein Herz gestohlen hast – und es gerne für immer behalten darfst.",
+        "Weil du mich mit deiner Art jeden Tag verzauberst.",
+        "Weil ich es liebe, dich einfach nur anzusehen.",
+        "Weil du meine Nummer 1 bist – heute, morgen und für immer.",
+        "Weil du selbst meine schlechte Laune in Sekunden wegzauberst.",
+        "Weil sich mit dir alles richtig anfühlt.",
+        "Weil du meine kleine perverse Sau bist. :P ❤️",
+        "Weil ich noch tausend weitere Abenteuer mit dir erleben will.",
+        "Weil du einfach perfekt für mich bist.",
+        "Weil meine Liebe zu dir jeden einzelnen Tag noch größer wird.",
+        "Weil du Deepika bist – und ich dich mehr liebe, als Worte jemals sagen könnten! ❤️"
+      ];
+
+      const SEED = [
+        { "id": "relationship", "emoji": "❤️", "date": "2026-09-06", "desc": "Wir sind zusammengekommen", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" },
+        { "id": "snapchat", "emoji": "👻", "date": "2026-07-10", "desc": "Wir haben uns auf Snapchat geaddet", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" },
+        { "id": "firstDate", "emoji": "🥹", "date": "2026-07-21", "desc": "Unser allererstes Treffen", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" },
+        { "id": "homeDate", "emoji": "🏡", "date": "2026-10-26", "desc": "Unser erstes Treffen bei mir zu Hause", "text": "", "footer": "Diese Erinnerung gehört für immer uns. ❤️" }
+      ];
 
       function hashSecret(str) {
         let h = 5381;
@@ -1135,8 +858,6 @@
       document.documentElement.setAttribute("data-theme", THEMES.includes(savedTheme) ? savedTheme : "blau");
 
       let isUnlocked = false;
-      let sessionPassword = "";
-      let rawTemplateHTML = "";
 
       // ===== Login-Prüfung =====
       async function attemptUnlock() {
@@ -1155,7 +876,8 @@
           const payloadEl = $("encryptedPayload");
           const cipher = payloadEl ? payloadEl.textContent.trim() : "";
           const tplEl = $("protectedTemplate");
-
+          
+          let rawTemplateHTML = "";
           if (cipher) {
             rawTemplateHTML = await decryptText(cipher, val);
           } else if (tplEl) {
@@ -1174,7 +896,6 @@
           if ($("login")) $("login").remove();
 
           isUnlocked = true;
-          sessionPassword = val;
           document.title = "Für Deepika ❤️";
           window.scrollTo(0, 0);
 
@@ -1191,13 +912,13 @@
 
       // ===== Hauptanwendung =====
       function initApp() {
-        const appData = JSON.parse($("appData").textContent);
+        // Seite sichtbar schalten
+        show("website");
+        
         const GITHUB_OWNER = "WastedKaiser";
         const GITHUB_REPO = "Deepika";
         const DATA_FILE = "memories.json";
-        const DEFAULT_FOOTER = appData.defaultFooter;
-        const LOVE_REASONS = appData.reasons;
-        const SEED = appData.seed;
+        const DEFAULT_FOOTER = "Diese Erinnerung gehört für immer uns. ❤️";
 
         const MONTHS = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
         const EMOJIS = ["❤️", "💕", "😍", "🥹", "😘", "💍", "🌹", "🎁", "🎂", "🏡", "✈️", "🍕", "🎬", "🌅", "🌙", "⭐", "👻", "📱", "☕", "🎶", "🌴", "🤗", "🔥", "💋"];
@@ -1235,8 +956,7 @@
         }
 
         // ===== Live-Timer =====
-        const sd = appData.startDate;
-        const START_DATE = new Date(sd[0], sd[1], sd[2], sd[3], sd[4], sd[5]);
+        const START_DATE = new Date(2026, 8, 6, 16, 32, 0);
 
         function updateLiveTimer() {
           const now = new Date();
@@ -1294,6 +1014,36 @@
 
           setTimeout(() => clearInterval(rainInterval), duration);
         }
+
+        // ===== Klick-Zähler =====
+        const CLICK_KEY = "deepika-clicks";
+        let clickCount = parseInt(storageGet(CLICK_KEY)) || 0;
+        $("clickCountDisplay").textContent = clickCount;
+
+        $("clickerButton").addEventListener("click", (e) => {
+          clickCount++;
+          storageSet(CLICK_KEY, clickCount);
+          $("clickCountDisplay").textContent = clickCount;
+
+          // Kleine Herz-Animation beim Klicken
+          const heart = document.createElement("div");
+          heart.textContent = "❤️";
+          heart.style.position = "fixed";
+          heart.style.left = (e.clientX - 10) + "px";
+          heart.style.top = (e.clientY - 20) + "px";
+          heart.style.fontSize = "28px";
+          heart.style.pointerEvents = "none";
+          heart.style.transition = "all 0.8s ease-out";
+          heart.style.zIndex = "9999";
+          document.body.appendChild(heart);
+
+          requestAnimationFrame(() => {
+            heart.style.transform = "translateY(-100px) scale(1.5)";
+            heart.style.opacity = "0";
+          });
+
+          setTimeout(() => heart.remove(), 800);
+        });
 
         // ===== 100 Gründe Logik =====
         let lastReasonIndex = -1;
@@ -1718,15 +1468,10 @@
         $("photoUpload").addEventListener("click", () => { uploadKind = "photo"; $("fileInput").click(); });
         $("videoUpload").addEventListener("click", () => { uploadKind = "video"; $("fileInput").click(); });
 
-       // Init Data
-    show("website");
-    loadData();
-    loadMedia();
-
-        // Animation ausführen
-        if (typeof startHeartRain === "function") {
-          startHeartRain();
-        }
+        // Init Data und Start der Herz-Animation
+        loadData();
+        loadMedia();
+        startHeartRain();
       }
     })();
   </script>
