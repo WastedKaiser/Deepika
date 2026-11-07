@@ -777,36 +777,22 @@
 <body>
 
   <!-- Passwortabfrage -->
-
   <div id="login" class="page active">
     <h1>Für Deepika ❤️</h1>
-
     <p>Ich habe etwas für dich vorbereitet. 🥹💕</p>
-
     <p>Aber zuerst musst du unser kleines Geheimnis kennen. 🔐</p>
-
     <div id="loginForm">
-      <input
-        type="password"
-        id="password"
-        placeholder="Unsere geheime Zahl ❤️"
-        inputmode="numeric"
-        autocomplete="off"
-      >
-
+      <input type="password" id="password" placeholder="Unsere geheime Zahl ❤️" inputmode="numeric" autocomplete="off">
       <button type="button" id="unlockBtn">Öffnen ❤️</button>
     </div>
-
     <p id="error" aria-live="polite"></p>
   </div>
 
   <!-- Geschützter Inhalt (erst nach Passworteingabe im DOM verfügbar) -->
   <template id="protectedTemplate">
-
     <!-- Farbwahl + Live-Timer rechts oben -->
     <div id="themePicker">
       <button id="themeToggle" type="button" aria-label="Farben ändern">🎨</button>
-
       <div id="themePanel" role="group" aria-label="Farbe wählen">
         <button type="button" class="swatch" data-theme="blau" aria-label="Blau"></button>
         <button type="button" class="swatch" data-theme="pink" aria-label="Pink"></button>
@@ -815,7 +801,6 @@
         <button type="button" class="swatch" data-theme="gruen" aria-label="Grün"></button>
         <button type="button" class="swatch" data-theme="lila" aria-label="Lila"></button>
       </div>
-
       <div id="liveTimer" aria-live="polite">
         <span class="timer-label">Zusammen seit 💕</span>
         <span id="timerValue" class="timer-value">Lädt …</span>
@@ -824,38 +809,24 @@
 
     <!-- Hauptseite -->
     <div id="website" class="page">
-
       <div class="container">
-
         <h1>Deepika, ich liebe dich über alles! ❤️</h1>
-
         <p>
-          Wir sind zwar schon seit dem
-          <span class="date">6. September 2026</span> zusammen,
-          aber mir kommt es so vor, als würde unsere Geschichte
-          gerade erst richtig beginnen. Wir haben noch eine ewig
-          lange, wunderschöne Reise vor uns, auf die ich mich
-          jeden einzelnen Tag freue.
+          Wir sind zwar schon seit dem <span class="date">6. September 2026</span> zusammen,
+          aber mir kommt es so vor, als würde unsere Geschichte gerade erst richtig beginnen. 
+          Wir haben noch eine ewig lange, wunderschöne Reise vor uns, auf die ich mich jeden einzelnen Tag freue.
         </p>
-
         <p>
-          Mit dir fühlt sich selbst der gewöhnlichste Tag besonders an.
-          Du bringst mich zum Lachen, machst mich glücklich und schaffst
-          es immer wieder, dass ich mich aufs Neue in dich verliebe.
-          Ich kann es kaum erwarten, noch so viele Erinnerungen mit dir
-          zu sammeln, mit dir zu lachen, Blödsinn zu machen und einfach
-          gemeinsam durchs Leben zu gehen. Ich liebe dich, Deepika,
+          Mit dir fühlt sich selbst der gewöhnlichste Tag besonders an. Du bringst mich zum Lachen, 
+          machst mich glücklich und schaffst es immer wieder, dass ich mich aufs Neue in dich verliebe.
+          Ich kann es kaum erwarten, noch so viele Erinnerungen mit dir zu sammeln, mit dir zu lachen, 
+          Blödsinn zu machen und einfach gemeinsam durchs Leben zu gehen. Ich liebe dich, Deepika,
           mehr als Worte beschreiben können. ❤️
         </p>
-
         <p>
           Und jetzt hör auf, so süß zu sein ... du perverse Sau. :P ❤️
-
-          <small class="small-text">
-            (btw du hast wunderschöne braune Augen 👀)
-          </small>
+          <small class="small-text">(btw du hast wunderschöne braune Augen 👀)</small>
         </p>
-
         <img class="photo" src="deepikaprabh.jpg" alt="Foto von uns">
 
         <!-- 100 Gründe warum ich dich liebe -->
@@ -869,16 +840,9 @@
         </div>
 
         <h1 class="timeline-title">Unsere Geschichte ❤️</h1>
-
-        <p class="timeline-intro">
-          Unsere besonderen Momente, das Neueste steht oben.
-          Tipp auf einen Moment, mein Schatz. 🥹💕
-        </p>
-
+        <p class="timeline-intro">Unsere besonderen Momente, das Neueste steht oben. Tipp auf einen Moment, mein Schatz. 🥹💕</p>
         <div id="memoryList" class="memory-list"></div>
-
         <p class="heart">Für immer wir. ❤️</p>
-
       </div>
 
       <div id="fabs">
@@ -892,55 +856,36 @@
     <!-- Einzelne Erinnerung -->
     <div id="memoryPage" class="page">
       <div class="container">
-
         <button class="back-button" id="memoryBack" type="button">← Zurück zu unserer Geschichte</button>
-
         <div id="memoryEmoji" class="big-emoji">❤️</div>
-
         <h1 id="memoryTitle"></h1>
-
         <p id="memoryDate" class="date"></p>
-
-        <div class="memory-content">
-          <p id="memoryText"></p>
-        </div>
-
+        <div class="memory-content"><p id="memoryText"></p></div>
         <p id="memoryFooter" class="heart"></p>
-
         <button id="editButton" class="edit-button" type="button">✏️ Bearbeiten</button>
-
       </div>
     </div>
 
     <!-- Neue Erinnerung / Bearbeiten -->
     <div id="editorPage" class="page">
       <div class="container">
-
         <button class="back-button" id="editorBack" type="button">← Abbrechen</button>
-
         <h1 id="editorHeading">Neue Erinnerung ❤️</h1>
-
         <div class="field-label">1. Emoji aussuchen</div>
         <div id="emojiPreview" class="big-emoji">❤️</div>
         <div id="emojiGrid"></div>
         <input id="emojiCustom" type="text" placeholder="oder eigenes Emoji eintippen" autocomplete="off">
-
         <div class="field-label">2. Datum</div>
         <input id="dateInput" type="date">
-
         <div class="field-label">3. Kurze Beschreibung</div>
         <input id="descInput" type="text" maxlength="80" placeholder="z. B. Unser erster Kuss" autocomplete="off">
-
         <div class="field-label">4. Dein Text</div>
         <textarea id="textInput" placeholder="Hier schreibst du deinen Text hinein …"></textarea>
-
         <div class="field-label">5. Schlusszeile (kannst du ändern)</div>
         <input id="footerInput" type="text" maxlength="80" autocomplete="off">
-
         <button id="saveButton" class="save-button" type="button">💾 Speichern</button>
         <button id="deleteButton" class="danger" type="button">🗑️ Erinnerung löschen</button>
         <button id="encryptRepoButton" class="encrypt-button" type="button">🔒 Quellcode auf GitHub verschlüsseln (AES-256)</button>
-
       </div>
     </div>
 
@@ -988,11 +933,8 @@
           <h2 id="noteTitle">📝 Notizen</h2>
           <button id="noteSave" class="note-icon-btn" type="button" aria-label="Speichern">✓</button>
         </div>
-
         <textarea id="noteText" placeholder="Schreib hier deine Notizen …" spellcheck="true"></textarea>
-
         <button id="noteUnlock" type="button">✏️ Bearbeiten (PIN)</button>
-
         <p id="noteHint" class="note-hint"></p>
       </div>
     </div>
@@ -1001,9 +943,7 @@
     <div id="pinModal" class="modal">
       <div class="modal-box">
         <h2>🔐 PIN eingeben</h2>
-
         <input id="pinInput" type="password" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="••">
-
         <div id="tokenBlock">
           <div class="hint">
             Einmalig: GitHub-Token, damit die Erinnerung automatisch auf der
@@ -1012,9 +952,7 @@
           </div>
           <input id="tokenInput" type="password" autocomplete="off" placeholder="github_pat_…">
         </div>
-
         <p id="pinError" aria-live="polite"></p>
-
         <div class="modal-buttons">
           <button id="pinCancel" class="secondary" type="button">Abbrechen</button>
           <button id="pinOk" type="button">OK</button>
@@ -1050,7 +988,6 @@
           "Weil deine Küsse einfach süchtig machen. 💋",
           "Weil ich deine Art liebe, wie du mich anschaust.",
           "Weil mit dir selbst der langweiligste Alltag besonders wird.",
-          "Weil 67676767.",
           "Weil du meine beste Freundin und meine große Liebe zugleich bist.",
           "Weil du so gut riechst, dass ich am liebsten nie wieder loslassen würde.",
           "Weil ich es liebe, deine Hand zu halten.",
@@ -1147,7 +1084,7 @@
     (function () {
       "use strict";
 
-      // ===== Kryptografie & Hash-Prüfung (Passwort & PIN stehen NICHT im Klartext) =====
+      // ===== Kryptografie & Hash-Prüfung =====
       const PW_HASH = 365431000;
       const PIN_HASH = 5861746;
 
@@ -1161,45 +1098,11 @@
 
       async function deriveAesKey(password, salt) {
         const enc = new TextEncoder();
-        const keyMaterial = await crypto.subtle.importKey(
-          "raw",
-          enc.encode(password),
-          { name: "PBKDF2" },
-          false,
-          ["deriveKey"]
-        );
+        const keyMaterial = await crypto.subtle.importKey("raw", enc.encode(password), { name: "PBKDF2" }, false, ["deriveKey"]);
         return crypto.subtle.deriveKey(
-          {
-            name: "PBKDF2",
-            salt: salt,
-            iterations: 100000,
-            hash: "SHA-256"
-          },
-          keyMaterial,
-          { name: "AES-GCM", length: 256 },
-          false,
-          ["encrypt", "decrypt"]
+          { name: "PBKDF2", salt: salt, iterations: 100000, hash: "SHA-256" },
+          keyMaterial, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
         );
-      }
-
-      async function encryptText(plainText, password) {
-        const salt = crypto.getRandomValues(new Uint8Array(16));
-        const iv = crypto.getRandomValues(new Uint8Array(12));
-        const key = await deriveAesKey(password, salt);
-        const enc = new TextEncoder();
-        const encrypted = new Uint8Array(
-          await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, enc.encode(plainText))
-        );
-        const combined = new Uint8Array(salt.length + iv.length + encrypted.length);
-        combined.set(salt, 0);
-        combined.set(iv, salt.length);
-        combined.set(encrypted, salt.length + iv.length);
-
-        let binary = "";
-        for (let i = 0; i < combined.length; i++) {
-          binary += String.fromCharCode(combined[i]);
-        }
-        return btoa(binary);
       }
 
       async function decryptText(base64Cipher, password) {
@@ -1226,7 +1129,7 @@
         try { localStorage.setItem(key, value); } catch (e) {}
       }
 
-      // Farbthema schon auf dem Login-Bildschirm anwenden
+      // Farbthema beim Laden anwenden
       const THEMES = ["blau", "pink", "gelb", "rot", "gruen", "lila"];
       const savedTheme = storageGet("deepika-theme") || "blau";
       document.documentElement.setAttribute("data-theme", THEMES.includes(savedTheme) ? savedTheme : "blau");
@@ -1286,7 +1189,7 @@
         if (e.key === "Enter") attemptUnlock();
       });
 
-      // ===== Hauptanwendung (startet erst nach erfolgreichem Login) =====
+      // ===== Hauptanwendung =====
       function initApp() {
         const appData = JSON.parse($("appData").textContent);
         const GITHUB_OWNER = "WastedKaiser";
@@ -1296,11 +1199,8 @@
         const LOVE_REASONS = appData.reasons;
         const SEED = appData.seed;
 
-        const MONTHS = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli",
-                        "August", "September", "Oktober", "November", "Dezember"];
-
-        const EMOJIS = ["❤️", "💕", "😍", "🥹", "😘", "💍", "🌹", "🎁", "🎂", "🏡", "✈️", "🍕",
-                        "🎬", "🌅", "🌙", "⭐", "👻", "📱", "☕", "🎶", "🌴", "🤗", "🔥", "💋"];
+        const MONTHS = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+        const EMOJIS = ["❤️", "💕", "😍", "🥹", "😘", "💍", "🌹", "🎁", "🎂", "🏡", "✈️", "🍕", "🎬", "🌅", "🌙", "⭐", "👻", "📱", "☕", "🎶", "🌴", "🤗", "🔥", "💋"];
 
         function show(pageId) {
           if (!isUnlocked) return;
@@ -1388,7 +1288,6 @@
             heart.style.fontSize = (Math.random() * 18 + 18) + "px";
             const fallDuration = (Math.random() * 1.5 + 1.8).toFixed(2);
             heart.style.animationDuration = fallDuration + "s";
-
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), parseFloat(fallDuration) * 1000);
           }, intervalTime);
@@ -1405,4 +1304,430 @@
           } while (idx === lastReasonIndex && LOVE_REASONS.length > 1);
 
           lastReasonIndex = idx;
-          $("reasonNumber").textContent = "Grund #" + (
+          $("reasonNumber").textContent = "Grund #" + (idx + 1) + " von " + LOVE_REASONS.length;
+          $("reasonText").textContent = LOVE_REASONS[idx];
+        });
+
+        // ===== Farbwahl =====
+        $("themeToggle").addEventListener("click", (e) => {
+          e.stopPropagation();
+          $("themePanel").classList.toggle("open");
+        });
+        document.querySelectorAll(".swatch").forEach((s) => {
+          s.addEventListener("click", () => {
+            const theme = s.dataset.theme;
+            document.documentElement.setAttribute("data-theme", theme);
+            storageSet("deepika-theme", theme);
+            document.querySelectorAll(".swatch").forEach(btn => btn.classList.toggle("active", btn === s));
+            $("themePanel").classList.remove("open");
+          });
+        });
+        document.addEventListener("click", (e) => {
+          if ($("themePanel") && !$("themePanel").contains(e.target) && e.target.id !== "themeToggle") {
+            $("themePanel").classList.remove("open");
+          }
+        });
+
+        // ===== Notizblock =====
+        const NOTE_KEY = "deepika-shared-note";
+        $("noteButton").addEventListener("click", () => {
+          $("noteText").value = storageGet(NOTE_KEY) || "";
+          $("noteModal").classList.add("open");
+          setTimeout(() => $("noteText").focus(), 50);
+        });
+        $("noteDiscard").addEventListener("click", () => {
+          $("noteModal").classList.remove("open");
+        });
+        $("noteSave").addEventListener("click", () => {
+          storageSet(NOTE_KEY, $("noteText").value);
+          $("noteModal").classList.remove("open");
+          toast("Notiz gespeichert ✔️");
+        });
+        if($("noteUnlock")) {
+          $("noteUnlock").addEventListener("click", () => {
+            toast("Bearbeitungsmodus aktiv.");
+          });
+        }
+
+        // ===== Daten & GitHub Sync =====
+        let state = { updatedAt: 0, memories: SEED.map(m => ({...m})) };
+
+        function readLocal() {
+          try {
+            const data = JSON.parse(storageGet("deepika-memories"));
+            if (data && Array.isArray(data.memories)) return data;
+          } catch (e) {}
+          return null;
+        }
+
+        async function readRemote() {
+          try {
+            const res = await fetch(DATA_FILE + "?t=" + Date.now(), { cache: "no-store" });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && Array.isArray(data.memories)) return data;
+            }
+          } catch (e) {}
+          return null;
+        }
+
+        async function loadData() {
+          const local = readLocal();
+          const remote = await readRemote();
+          const candidates = [local, remote].filter(Boolean);
+          if (candidates.length) {
+            candidates.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+            state = candidates[0];
+          }
+          renderList();
+        }
+
+        function saveLocal() {
+          storageSet("deepika-memories", JSON.stringify(state));
+        }
+
+        function utf8ToBase64(text) {
+          return btoa(unescape(encodeURIComponent(text)));
+        }
+
+        async function pushToGithub(token) {
+          const api = "https://api.github.com/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/contents/" + DATA_FILE;
+          const headers = { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" };
+
+          let sha;
+          const current = await fetch(api, { headers: headers, cache: "no-store" });
+          if (current.ok) {
+            sha = (await current.json()).sha;
+          } else if (current.status !== 404) {
+            throw new Error("GitHub-Fehler " + current.status);
+          }
+
+          const body = {
+            message: "Erinnerungen aktualisiert",
+            content: utf8ToBase64(JSON.stringify(state, null, 2))
+          };
+          if (sha) body.sha = sha;
+
+          const res = await fetch(api, {
+            method: "PUT",
+            headers: Object.assign({ "Content-Type": "application/json" }, headers),
+            body: JSON.stringify(body)
+          });
+
+          if (!res.ok) throw new Error("GitHub-Fehler " + res.status);
+        }
+
+        async function persist(token) {
+          state.updatedAt = Date.now();
+          saveLocal();
+          renderList();
+
+          if (!token) {
+            toast("Gespeichert (nur auf diesem Gerät, da kein Token vorliegt).");
+            return;
+          }
+
+          try {
+            await pushToGithub(token);
+            toast("Gespeichert ✅ In ca. 1 Minute für alle sichtbar.");
+          } catch (e) {
+            toast("Nur lokal gespeichert. GitHub Fehler: " + e.message);
+          }
+        }
+
+        function renderList() {
+          const list = $("memoryList");
+          list.textContent = "";
+
+          const sorted = state.memories.slice().sort((a, b) => {
+            if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+            return String(b.id).localeCompare(String(a.id));
+          });
+
+          sorted.forEach((m) => {
+            const card = document.createElement("button");
+            card.type = "button";
+            card.className = "memory-card";
+            card.innerHTML = `
+              <span class="memory-icon">${m.emoji}</span>
+              <span class="memory-info">
+                <span class="memory-date">${formatDate(m.date)}</span>
+                <span class="memory-description">${m.desc}</span>
+              </span>
+              <span class="arrow">›</span>
+            `;
+            card.addEventListener("click", () => openMemory(m.id));
+            list.appendChild(card);
+          });
+        }
+
+        let currentId = null;
+        function openMemory(id) {
+          const m = state.memories.find((x) => x.id === id);
+          if (!m) return;
+          currentId = id;
+          $("memoryEmoji").textContent = m.emoji;
+          $("memoryTitle").textContent = m.desc;
+          $("memoryDate").textContent = formatDate(m.date);
+
+          const text = $("memoryText");
+          if (m.text && m.text.trim()) {
+            text.textContent = m.text;
+            text.className = "";
+          } else {
+            text.textContent = "Hier steht noch kein Text. Tipp unten auf „Bearbeiten“. ✏️";
+            text.className = "empty";
+          }
+          $("memoryFooter").textContent = m.footer || DEFAULT_FOOTER;
+          show("memoryPage");
+        }
+
+        $("memoryBack").addEventListener("click", () => show("website"));
+
+        // ===== Editor =====
+        let editingId = null;
+        let selectedEmoji = "❤️";
+
+        function setEmoji(emoji) {
+          selectedEmoji = emoji;
+          $("emojiPreview").textContent = emoji;
+          document.querySelectorAll(".emoji-option").forEach((b) => {
+            b.classList.toggle("selected", b.dataset.emoji === emoji);
+          });
+        }
+
+        EMOJIS.forEach((emoji) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "emoji-option";
+          b.dataset.emoji = emoji;
+          b.textContent = emoji;
+          b.addEventListener("click", () => { $("emojiCustom").value = ""; setEmoji(emoji); });
+          $("emojiGrid").appendChild(b);
+        });
+
+        $("emojiCustom").addEventListener("input", (e) => {
+          const symbol = firstSymbol(e.target.value);
+          if (symbol) setEmoji(symbol);
+        });
+
+        function todayIso() {
+          const d = new Date();
+          const pad = (n) => String(n).padStart(2, "0");
+          return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+        }
+
+        function openEditor(id) {
+          editingId = id || null;
+          const m = id ? state.memories.find((x) => x.id === id) : null;
+          $("editorHeading").textContent = m ? "Erinnerung bearbeiten ✏️" : "Neue Erinnerung ❤️";
+          $("emojiCustom").value = "";
+          setEmoji(m ? m.emoji : "❤️");
+          $("dateInput").value = m ? m.date : todayIso();
+          $("descInput").value = m ? m.desc : "";
+          $("textInput").value = m ? m.text : "";
+          $("footerInput").value = m ? (m.footer || DEFAULT_FOOTER) : DEFAULT_FOOTER;
+          $("deleteButton").style.display = m ? "block" : "none";
+          show("editorPage");
+        }
+
+        $("addButton").addEventListener("click", () => openEditor(null));
+        $("editButton").addEventListener("click", () => openEditor(currentId));
+        $("editorBack").addEventListener("click", () => {
+          if (editingId) openMemory(editingId); else show("website");
+        });
+
+        // ===== PIN-Abfrage =====
+        let pinAction = null;
+        function askPin(action) {
+          pinAction = action;
+          $("pinInput").value = "";
+          $("pinError").textContent = "";
+          $("tokenInput").value = "";
+          $("tokenBlock").classList.toggle("show", !storageGet("deepika-token"));
+          $("pinModal").classList.add("open");
+          setTimeout(() => $("pinInput").focus(), 50);
+        }
+
+        function closePin() {
+          $("pinModal").classList.remove("open");
+          pinAction = null;
+        }
+
+        $("pinCancel").addEventListener("click", closePin);
+        $("pinOk").addEventListener("click", () => {
+          const EDIT_PIN = "67";
+          if ($("pinInput").value !== EDIT_PIN) {
+            $("pinError").textContent = "Falscher PIN 😜";
+            $("pinInput").value = "";
+            $("pinInput").focus();
+            return;
+          }
+          const newToken = $("tokenInput").value.trim();
+          if (newToken) storageSet("deepika-token", newToken);
+          const token = storageGet("deepika-token");
+          const action = pinAction;
+          closePin();
+          if (action) action(token);
+        });
+        $("pinInput").addEventListener("keydown", (e) => {
+          if (e.key === "Enter") $("pinOk").click();
+        });
+
+        // ===== Speichern und Löschen =====
+        $("saveButton").addEventListener("click", () => {
+          const desc = $("descInput").value.trim();
+          const date = $("dateInput").value;
+          if (!date) { toast("Bitte ein Datum aussuchen. 📅"); return; }
+          if (!desc) { toast("Bitte eine kurze Beschreibung schreiben. ✍️"); return; }
+
+          const entry = {
+            id: editingId || ("m" + Date.now()),
+            emoji: selectedEmoji,
+            date: date,
+            desc: desc,
+            text: $("textInput").value,
+            footer: $("footerInput").value.trim() || DEFAULT_FOOTER
+          };
+
+          askPin(async (token) => {
+            const index = state.memories.findIndex((x) => x.id === entry.id);
+            if (index >= 0) state.memories[index] = entry; else state.memories.push(entry);
+            show("website");
+            await persist(token);
+          });
+        });
+
+        $("deleteButton").addEventListener("click", () => {
+          if (!editingId) return;
+          if (!confirm("Diese Erinnerung wirklich löschen?")) return;
+          askPin(async (token) => {
+            state.memories = state.memories.filter((x) => x.id !== editingId);
+            show("website");
+            await persist(token);
+          });
+        });
+        
+        if ($("encryptRepoButton")) {
+          $("encryptRepoButton").addEventListener("click", () => {
+             toast("Diese Verschlüsselungsfunktion wird derzeit vorbereitet.");
+          });
+        }
+
+        // ===== Fotos und Videos (Galerie) =====
+        const MEDIA_FILE = "media.json";
+        let media = { items: [] };
+        let sessionItems = [];
+        let viewList = [];
+        let viewIndex = 0;
+        let uploadKind = "photo";
+
+        async function loadMedia() {
+          try {
+            const res = await fetch(MEDIA_FILE + "?t=" + Date.now(), { cache: "no-store" });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && Array.isArray(data.items)) media = data;
+            }
+          } catch (e) {}
+          renderMedia();
+        }
+
+        function itemsOf(kind) {
+          const seen = new Set();
+          return sessionItems.concat(media.items).filter(i => i.type === kind && !seen.has(i.id) && seen.add(i.id)).sort((a,b) => (b.added||0)-(a.added||0));
+        }
+
+        function renderGrid(kind) {
+          const grid = $(kind === "photo" ? "photoGrid" : "videoGrid");
+          const list = itemsOf(kind);
+          grid.textContent = "";
+          $(kind === "photo" ? "photoEmpty" : "videoEmpty").style.display = list.length ? "none" : "block";
+
+          list.forEach((item, index) => {
+            const tile = document.createElement("div");
+            tile.className = "tile";
+            const src = item.src || item.file;
+            if (kind === "photo") {
+              const img = document.createElement("img");
+              img.src = src;
+              tile.appendChild(img);
+            } else {
+              const video = document.createElement("video");
+              video.src = src + "#t=0.1";
+              tile.appendChild(video);
+              const play = document.createElement("span");
+              play.className = "play";
+              play.textContent = "▶";
+              tile.appendChild(play);
+            }
+            tile.addEventListener("click", () => openViewer(kind, index));
+            grid.appendChild(tile);
+          });
+        }
+
+        function renderMedia() { renderGrid("photo"); renderGrid("video"); }
+
+        $("photoButton").addEventListener("click", () => show("photoPage"));
+        $("videoButton").addEventListener("click", () => show("videoPage"));
+        $("photoBack").addEventListener("click", () => show("website"));
+        $("videoBack").addEventListener("click", () => show("website"));
+
+        // ===== Großansicht (Viewer) =====
+        function showViewerItem() {
+          const item = viewList[viewIndex];
+          const body = $("viewerBody");
+          body.textContent = "";
+          if (!item) return;
+
+          const src = item.src || item.file;
+          if (item.type === "photo") {
+            const img = document.createElement("img");
+            img.src = src;
+            body.appendChild(img);
+            $("viewerControls").classList.remove("show");
+          } else {
+            const video = document.createElement("video");
+            video.src = src;
+            video.controls = true;
+            video.autoplay = true;
+            video.playsInline = true;
+            body.appendChild(video);
+            $("viewerControls").classList.add("show");
+          }
+          $("viewerPrev").disabled = viewIndex <= 0;
+          $("viewerNext").disabled = viewIndex >= viewList.length - 1;
+        }
+
+        function openViewer(kind, index) {
+          viewList = itemsOf(kind);
+          viewIndex = index;
+          showViewerItem();
+          $("viewer").classList.add("open");
+        }
+
+        $("viewerClose").addEventListener("click", () => {
+          $("viewerBody").textContent = "";
+          $("viewer").classList.remove("open");
+        });
+        $("viewerPrev").addEventListener("click", () => { if(viewIndex>0){ viewIndex--; showViewerItem(); } });
+        $("viewerNext").addEventListener("click", () => { if(viewIndex<viewList.length-1){ viewIndex++; showViewerItem(); } });
+        $("skipBack").addEventListener("click", () => { const v = $("viewerBody").querySelector("video"); if(v) v.currentTime-=10; });
+        $("skipFwd").addEventListener("click", () => { const v = $("viewerBody").querySelector("video"); if(v) v.currentTime+=10; });
+
+        $("photoUpload").addEventListener("click", () => { uploadKind = "photo"; $("fileInput").click(); });
+        $("videoUpload").addEventListener("click", () => { uploadKind = "video"; $("fileInput").click(); });
+
+        // Init Data
+        loadData();
+        loadMedia();
+
+        // Animation ausführen
+        if (typeof startHeartRain === "function") {
+          startHeartRain();
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
